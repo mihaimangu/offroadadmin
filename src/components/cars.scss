@@ -1,0 +1,9 @@
+.cars-list{
+    &__wrapper{
+    }
+    &__single-ad{
+        border: 1px solid rgb(198, 196, 196);
+        display: flex;
+        margin-bottom: 5px;
+    }
+}
