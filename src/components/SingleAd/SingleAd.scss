@@ -1,0 +1,22 @@
+.single-ad{
+    
+    &__wrapper{
+        display: flex;
+        margin-bottom: 20px;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        max-width: 800px;
+        font-size:18px;
+        padding: 10px 30px;
+
+    }
+
+    &__display-wrapper{
+    }
+
+    &__source-link{
+        margin-bottom: 20px;
+        display: block;
+    }
+}

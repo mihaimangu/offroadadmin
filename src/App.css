@@ -1,7 +1,9 @@
 .App {
   text-align: center;
   background-color: #282c34;
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   color: white;
 
 }
@@ -9,6 +11,15 @@
 a{
   color: inherit;
   text-decoration: none;
+}
+
+.btn{
+  max-width: 100%;
+  min-height: 30px;
+  display: block;
+  max-width: 150px;
+  padding: 15px;
+  margin-bottom: 5px;
 }
 
 

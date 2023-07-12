@@ -1,9 +1,20 @@
 .cars-list{
     &__wrapper{
+        display: flex;
+        flex-direction: column;
+
     }
     &__single-ad{
         border: 1px solid rgb(198, 196, 196);
         display: flex;
         margin-bottom: 5px;
+        font-size: 18px;
+        padding: 5px;
+        justify-content: space-between;
+        .date{
+            margin-left: 20px;
+            font-size: 14px;
+            color: gray;
+        }
     }
 }
