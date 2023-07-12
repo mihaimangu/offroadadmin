@@ -1,0 +1,9 @@
+.app-menu{
+    &__main{
+        display: flex;
+        flex-direction: row;
+    }
+    &__item{
+        margin-right: 10px;
+    }
+}
