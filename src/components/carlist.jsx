@@ -30,7 +30,8 @@ function List(props){
 
     return (
         <div className="cars-list__wrapper">
-            <h2>This is a list of offroad cars</h2>
+            <h2>Gasesti aici anunturi cu masini de teren</h2>
+            <p>Anunturile sunt agregate din platforme precum OLX, Autovit sau LaJumate.</p>
             {isError && <div>error while getting data</div>}
             {loading ? <Oval /> : cars.length && cars.map((car) => {
                 return <Car key={car._id} data={car} />

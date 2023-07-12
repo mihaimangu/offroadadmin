@@ -45,3 +45,8 @@ img{
 .App-link {
   color: #61dafb;
 }
+
+.main-content-wrapper{
+  min-height: 70vh;
+
+}
