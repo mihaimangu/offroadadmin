@@ -17,3 +17,19 @@ export const scrapeSingleOffroadAd = (id) => {
         id
     })
 }
+
+// Jobs Section
+
+//get jobs
+export const getAllCrawlJobs = () => {
+    return axios.get(root + "/api/crawl-jobs");
+}
+
+export const addCrawlJob = (name, url) => {
+    const requestBody = {
+        name,
+        url
+    }
+
+    return axios.post(root + " /api/crawl-jobs", requestBody);
+}

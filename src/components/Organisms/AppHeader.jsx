@@ -15,7 +15,7 @@ const AppHeader = () => {
                 </div>
                 <div className="app-menu__wrapper">
                     <div className="app-menu__main">
-                        <Link className="app-menu__item">Home</Link>
+                        <Link to="/" className="app-menu__item">Home</Link>
                         <Link to="/jobs" className="app-menu__item">Jobs</Link>
                     </div>
                 </div>

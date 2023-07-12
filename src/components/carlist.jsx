@@ -18,7 +18,6 @@ function List(props){
 
         setLoading(true);
         getList().then((res) => {
-            console.log('we got data', {res})
             setLoading(false);
             if(res.data?.offroadCars){
                 setCars(res.data.offroadCars);
