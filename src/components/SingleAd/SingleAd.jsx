@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { useParams } from 'react-router-dom'; 
-import { getSingleOffroadAd, scrapeSingleOffroadAd } from '../../api/admin';
+import { root, getSingleOffroadAd, getSingleOffroadAdImages, scrapeSingleOffroadAd } from '../../api/admin';
 import style from './SingleAd.scss'
 import { stripHtml } from "string-strip-html";
 import {Oval} from 'react-loader-spinner';
@@ -27,6 +27,7 @@ function SingleAd(){
 
     const [adData, setAdData] = useState({});
     const [loading, setLoading] = useState(false);
+    const [imageList, setImageList] = useState([]);
 
     const scrapeAd = () => {
         setLoading(true);
@@ -36,7 +37,7 @@ function SingleAd(){
                 setAdData(res.data.adData)
                 setLoading(false);
 
-            }
+            }    
         }).catch(err => {
             console.log('we have error for loading', err);
         })
@@ -44,10 +45,23 @@ function SingleAd(){
 
     useEffect(() => {
         setLoading(true);
-        getSingleOffroadAd(id).then((res) => {
+        getSingleOffroadAd(id).then(async (res) => {
             if(res.data){
                 setAdData(res.data?.data);
                 setLoading(false);
+            
+                const hasImages = res.data.data.hasImages;
+                if(hasImages){
+                    const response = await getSingleOffroadAdImages(id);
+                    if(response?.data?.images){
+                        console.log('images are', response.data.images);
+                        setImageList(response.data.images);
+
+                    }
+                }
+                console.log('we have images', hasImages);
+            
+                
             }
         }).catch(err => {
             console.log('we have err', err)
@@ -61,6 +75,13 @@ function SingleAd(){
         
         {loading ? <Oval /> : <SingleAdDisplay adData={adData} />}
         <button onClick={scrapeAd} className="btn">Scrape ad data</button>
+        {imageList.length > 0 && <div className="images-wrapper">
+            {imageList.map((image, index) => {
+                return <div>
+                    <img src={`${root}/${image}`} alt="ad image" />
+                </div>
+            })}    
+        </div>}
     </div>
 }
 
