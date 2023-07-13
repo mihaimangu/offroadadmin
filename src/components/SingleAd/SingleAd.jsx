@@ -31,11 +31,21 @@ function SingleAd(){
 
     const scrapeAd = () => {
         setLoading(true);
-        scrapeSingleOffroadAd(id).then(res => {
+        scrapeSingleOffroadAd(id).then(async (res) => {
             console.log('we got res', res);
             if(res.data?.adData){
                 setAdData(res.data.adData)
                 setLoading(false);
+
+                const hasImages = res.data.adData.hasImages;
+                if(hasImages){
+                    const imagesResponse = await getSingleOffroadAdImages(id);
+                    if(imagesResponse?.data?.images){
+                        console.log('images are', imagesResponse.data.images);
+                        setImageList(imagesResponse.data.images);
+
+                    }
+                }
 
             }    
         }).catch(err => {
@@ -59,7 +69,6 @@ function SingleAd(){
 
                     }
                 }
-                console.log('we have images', hasImages);
             
                 
             }

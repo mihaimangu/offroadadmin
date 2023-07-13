@@ -1,17 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import dateFormat from 'dateformat';
+import {root} from '../api/admin';
 
-
-function Car({data: {Title, _id, dateAdded, price, adSource}}){
+function Car({data: {Title, _id, dateAdded, price, adSource, mainImage, hasImages }}){
 
     const formatedDate = dateFormat(new Date(dateAdded), "dd-mm-yyyy - hh:mm");
+    const imageUrl = hasImages ? `${root}/${mainImage}` : 'https://via.placeholder.com/150';
 
     return (
         <Link to={`/ad/${_id}`}>
             <div className="cars-list__single-ad">
                 <div className="car-ad__image">
-                    <img src="https://via.placeholder.com/150" alt="car" />
+                    <img src={imageUrl} alt="car" />
                     {adSource && <div className="car-ad__source">
                         {adSource}
                     </div>}
