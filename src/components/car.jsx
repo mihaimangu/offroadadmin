@@ -5,7 +5,7 @@ import {root} from '../api/admin';
 
 function Car({data: {Title, _id, dateAdded, price, adSource, mainImage, hasImages }}){
 
-    const formatedDate = dateFormat(new Date(dateAdded), "dd-mm-yyyy - hh:mm");
+    const formatedDate = dateFormat(new Date(dateAdded), "dd-mm-yyyy - HH:mm");
     const imageUrl = hasImages ? `${root}/${mainImage}` : 'https://via.placeholder.com/150';
 
     return (
