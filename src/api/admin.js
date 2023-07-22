@@ -22,6 +22,13 @@ export const scrapeSingleOffroadAd = (id) => {
     })
 }
 
+export const getTranslations = () => {
+    // the expected response data is an object containing a key named "translations".
+    // the translations object is a simple object containing key and values. 
+
+    return axios.get(root + "/api/translations");
+}
+
 // Jobs Section
 
 //get jobs

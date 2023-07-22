@@ -4,10 +4,7 @@ import { Link } from 'react-router-dom';
 
 // use absolute path for importing the 4x4logo
 import logo4x4 from 'images/4x4-logo.png';
-
-
 import './AppHeader.scss';
-
 
 const AppHeader = () => {
     return (
@@ -18,12 +15,7 @@ const AppHeader = () => {
                         <img src={logo4x4} className="App-logo" alt="logo" />
                     </Link>
                 </div>
-                <div className="app-menu__wrapper">
-                    <div className="app-menu__main">
-                        <Link to="/" className="app-menu__item">Anunturi</Link>
-                        <Link to="/jobs" className="app-menu__item">Jobs</Link>
-                    </div>
-                </div>
+                
             </header>
         </div>
     )
