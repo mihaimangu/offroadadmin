@@ -18,7 +18,7 @@ function DetailsTable({details}){
         <Table striped variant="dark">
             <tbody>
             {details.map((detail, index) => {
-                return <tr>
+                return <tr key={index}>
                     <td>{detail[0]}</td>
                     <td>{detail[1]}</td>
                 </tr>
@@ -33,7 +33,7 @@ function SingleAdDisplay({adData}){
 
     const translations = useContext(TranslationContext);
 
-    const {Title, description, dateAdded, isAvailable, link, dateLatestScrapped, details} = adData;
+    const {Title, description, dateAdded, isAvailable, link, dateLatestScrapped, details, price, adSource} = adData;
     const weHaveAvailabilityData = typeof isAvailable !== 'undefined';
 
     const cleanDescription = description ? stripHtml(description).result : "No description";
@@ -55,9 +55,12 @@ function SingleAdDisplay({adData}){
     
     return <div className="single-ad__display-wrapper">
         <h2>{Title}</h2>
+        {price && <h3>Pret: {price} €</h3>}
         <p>Data adaugarii: {dateAddedString}</p>
         <p dangerouslySetInnerHTML={{__html: descriptionWithLineBreaks.replace(/\n/g, '<br>')}}></p>
         {weHaveAvailabilityData && <p>Anunt disponibil: {isAvailable ? 'Yes' : 'No'}</p>}
+        {adSource && <h4>Preluat din {adSource}</h4>}
+        
         {hasDetails && <DetailsTable details={detailsArray} />}
         <Button href={link}>Vezi anuntul original</Button>
        
@@ -119,16 +122,13 @@ function SingleAd(){
         });
     }, [])
 
-
-    const {Title, description} = adData;
-
     return <div className="single-ad__wrapper">
         
         {loading ? <Oval /> : <SingleAdDisplay adData={adData} />}
         {imageList.length > 0 && <div className="single-ad__images-wrapper">
             <Carousel>
                 {imageList.map((image, index) => {
-                    return <div>
+                    return <div className="single-ad__carousel-image" key={index}>
                         <img src={`${root}/${image}`} alt="ad image" />
                     </div>
                 })}  
