@@ -4,8 +4,8 @@ import axios from "axios";
 const isProduction = process.env.NODE_ENV === "production";
 export const root = isProduction ?  "https://masinideteren.ro:4000" : "http://localhost:4000";
 
-export const getList = () => {
-    return axios.get(root + "/api/offroad-cars");
+export const getList = (settings) => {
+    return axios.get(root + "/api/offroad-cars", { params: settings });
 }
 
 export const getSingleOffroadAd = (id) => {

@@ -22,7 +22,18 @@ function SettingsProvider({children}){
         const fetchFilters = async() => {
             const response = await getFilters();
             const {filters} = response.data;
-            setFilters(filters);
+
+            if(filters){
+                let filterObject = {};
+                filters.map(filter => {
+                    const {filterName, ...filterData } = filter;
+                    filterObject[filterName] = filterData;
+                })
+    
+                setFilters(filterObject);
+            }
+
+        
         }
         fetchFilters();
     }, [])

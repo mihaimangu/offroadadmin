@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { getList } from "../../../api/admin";
-import Car from "../../car";
+import Car from "components/car.jsx";
+import AdFilters from "components/Organisms/AdFilters/AdFilters.jsx";
 import {Oval} from 'react-loader-spinner';
 
 // import cars.scss
@@ -13,11 +14,9 @@ function List(props){
     const [cars, setCars] = useState([])
     const [loading, setLoading] = useState(false);
 
-   useEffect(() => {
-        setIsError(false);
-
+    const grabAdsFromApi = (settings = {}) => {
         setLoading(true);
-        getList().then((res) => {
+        getList(settings).then((res) => {
             setLoading(false);
             if(res.data?.offroadCars){
                 setCars(res.data.offroadCars);
@@ -26,6 +25,19 @@ function List(props){
             console.log('we have err', err)
             setIsError(true)
         });
+    }
+
+    const searchAds = (searchSettings) => {
+        console.log('searching ads', searchSettings)
+        grabAdsFromApi(searchSettings);
+       
+    }
+
+   useEffect(() => {
+        setIsError(false);
+
+        setLoading(true);
+        grabAdsFromApi();
    }, [])
 
     return (
@@ -33,6 +45,7 @@ function List(props){
             <h2>Gasesti aici anunturi cu masini de teren</h2>
             <p>Anunturile sunt agregate din platforme precum OLX, Autovit sau LaJumate.</p>
             {isError && <div>error while getting data</div>}
+            <AdFilters onSearch={searchAds}  />
             {loading ? <Oval /> : cars.length && cars.map((car) => {
                 return <Car key={car._id} data={car} />
             })}
