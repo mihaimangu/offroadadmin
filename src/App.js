@@ -8,27 +8,13 @@ import AppFooter from 'components/Organisms/AppFooter/AppFooter';
 import JobsPage from './components/Pages/Jobs';
 
 import { BrowserRouter as Router, Route, LinkProps, Routes, Link } from 'react-router-dom';
-import { getTranslations } from 'api/admin';
-
-export const TranslationContext = React.createContext();
+import SettingsContext from 'context/SettingsContext';
 
 
 function App() {
-  const [translations, setTranslations] = useState({});
-
-  useEffect(() => {
-    console.log("fetching translations")
-    const fetchTranslations = async() => {
-      const response = await getTranslations();
-      const {translations} = response.data;
-      setTranslations(translations);
-
-    }
-    fetchTranslations();
-  }, []);
 
   return <div className="App">
-     <TranslationContext.Provider value={translations}>
+     <SettingsContext>
      <Router>
           <AppHeader />
           <section className="main-content-wrapper">
@@ -40,7 +26,7 @@ function App() {
           </section>
           <AppFooter />
       </Router>
-      </TranslationContext.Provider>
+      </SettingsContext>
   </div>
 }
 

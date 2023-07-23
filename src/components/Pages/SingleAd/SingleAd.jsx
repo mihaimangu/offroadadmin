@@ -1,5 +1,5 @@
 import React, {useEffect, useState, useContext} from 'react';
-import { TranslationContext } from 'App';
+import { TranslationContext } from 'context/SettingsContext';
 import { useParams } from 'react-router-dom'; 
 import { root, getSingleOffroadAd, getSingleOffroadAdImages, scrapeSingleOffroadAd } from '../../../api/admin';
 import style from './SingleAd.scss'
