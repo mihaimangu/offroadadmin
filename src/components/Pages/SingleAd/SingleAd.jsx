@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { root, getSingleOffroadAd, getSingleOffroadAdImages, scrapeSingleOffroadAd } from '../../../api/admin';
 import style from './SingleAd.scss'
 import { stripHtml } from "string-strip-html";
-import {Oval} from 'react-loader-spinner';
+import LoadingWrapper from 'components/Molecules/LoadingWrapper';
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
@@ -124,7 +124,7 @@ function SingleAd(){
 
     return <div className="single-ad__wrapper">
         
-        {loading ? <Oval /> : <SingleAdDisplay adData={adData} />}
+        {loading ? <LoadingWrapper /> : <SingleAdDisplay adData={adData} />}
         {imageList.length > 0 && <div className="single-ad__images-wrapper">
             <Carousel>
                 {imageList.map((image, index) => {

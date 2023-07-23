@@ -35,11 +35,11 @@ const AdFilters = ({onSearch}) => {
         <div className="filter-ads__wrapper">
             <Form>
                 <div className="filter-ads__row">
-                    <Form.Group>
+                    <Form.Group className="filter-ads__input-group">
                         <Form.Label className="filter-ads__group-label">Pret de la</Form.Label>
                         <Form.Control type="number" placeholder="Pret de la" onChange={(e) => updateSearchProperty('priceFrom', e.target.value)} />
                     </Form.Group>
-                    <Form.Group>
+                    <Form.Group  className="filter-ads__input-group">
                         <Form.Label className="filter-ads__group-label">Pret de la</Form.Label>
                         <Form.Control type="number" placeholder="Pret de la" onChange={(e) => updateSearchProperty('priceTo', e.target.value)} />
                     </Form.Group>

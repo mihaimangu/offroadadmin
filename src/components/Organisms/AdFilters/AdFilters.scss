@@ -1,6 +1,9 @@
 .filter-ads{
     &__wrapper{
         max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 30px;
     }
     &__search-btn{
         width: 100%;
@@ -11,4 +14,17 @@
 
         }
     }
+    &__row{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        > div{
+            flex: 1;
+            margin-right: 10px;
+        }
+        > div:last-child{
+            margin-right:0;
+        }
+    }
+
 }

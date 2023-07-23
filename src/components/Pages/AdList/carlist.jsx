@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import { getList } from "../../../api/admin";
 import Car from "components/car.jsx";
 import AdFilters from "components/Organisms/AdFilters/AdFilters.jsx";
-import {Oval} from 'react-loader-spinner';
+import LoadingWrapper from "components/Molecules/LoadingWrapper";
 
 // import cars.scss
 import styles from './cars.scss'
@@ -46,7 +46,7 @@ function List(props){
             <p>Anunturile sunt agregate din platforme precum OLX, Autovit sau LaJumate.</p>
             {isError && <div>error while getting data</div>}
             <AdFilters onSearch={searchAds}  />
-            {loading ? <Oval /> : cars.length && cars.map((car) => {
+            {loading ? <LoadingWrapper /> : cars.length && cars.map((car) => {
                 return <Car key={car._id} data={car} />
             })}
         </div>
