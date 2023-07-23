@@ -29,6 +29,10 @@ export const getTranslations = () => {
     return axios.get(root + "/api/translations");
 }
 
+export const getFilters = () => {
+    return axios.get(root + "/api/filters");
+}
+
 // Jobs Section
 
 //get jobs
