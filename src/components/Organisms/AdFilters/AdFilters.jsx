@@ -23,7 +23,6 @@ const AdFilters = ({onSearch}) => {
     const {model} = predefinedFilterSettings;
 
     const updateSearchProperty = (property, value) => {
-        console.log('update search property', property, value)
         setSearchSettings({...searchSettings, [property]: value})
     }
 
