@@ -48,7 +48,8 @@ function List(props){
     useEffect(() => {
 
         let searchParams = {
-            ...filterSettings
+            ...filterSettings,
+            page: currentPage
         }
         grabAdsFromApi(searchParams)
 
