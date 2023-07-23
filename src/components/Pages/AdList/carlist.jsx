@@ -71,7 +71,6 @@ function List(props){
                 return <Car key={car._id} data={car} />
             })}
             <Pagination currentPage={currentPage} totalPages={totalPages} onSetPage={updateCurrentPageandSearchSettings} />    
-
         </div>
     )
 }
