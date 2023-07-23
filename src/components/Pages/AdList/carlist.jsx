@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
-import { getList } from "../api/admin";
-import Car from "./car";
+import { getList } from "../../../api/admin";
+import Car from "../../car";
 import {Oval} from 'react-loader-spinner';
 
 // import cars.scss

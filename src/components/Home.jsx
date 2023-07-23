@@ -1,6 +1,6 @@
 
 import react, {useEffect} from 'react';
-import List from './carlist';
+import List from './Pages/AdList/carlist';
 
 
 function Home(){
