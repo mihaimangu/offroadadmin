@@ -1,6 +1,5 @@
 .filter-ads{
     &__wrapper{
-        max-width: 500px;
         margin-left: auto;
         margin-right: auto;
         margin-bottom: 30px;
@@ -10,9 +9,6 @@
     }
     &__group{
         text-align: left;
-        label{
-
-        }
     }
     &__input-group{
         text-align: left;   

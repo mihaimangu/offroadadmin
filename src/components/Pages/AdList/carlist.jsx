@@ -68,9 +68,12 @@ function List(props){
             <p>Anunturile sunt agregate din platforme precum OLX, Autovit sau LaJumate.</p>
             {isError && <div>error while getting data</div>}
             <AdFilters onSearch={filterAds}  />
-            {loading ? <LoadingWrapper /> : cars.length && cars.map((car) => {
-                return <Car key={car._id} data={car} />
-            })}
+            <div className="cars-list__inner-wrapper">
+                {loading ? <LoadingWrapper /> : cars.length && cars.map((car) => {
+                    return <Car key={car._id} data={car} />
+                })}
+            </div>
+       
             <Pagination currentPage={currentPage} totalPages={totalPages} onSetPage={updateCurrentPageandSearchSettings} />    
         </div>
     )
