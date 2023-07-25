@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom';
 import dateFormat from 'dateformat';
 import {root} from '../api/admin';
 
-function Car({data: {Title, _id, dateAdded, price, adSource, mainImage, hasImages }}){
+function Car({data: {Title, _id, dateAdded, price, adSource, mainImage, hasImages }}){ 
 
-    const formatedDate = dateFormat(new Date(dateAdded), "dd-mm-yyyy - HH:mm");
+    const dateAddedObject = new Date(dateAdded);
+    const dateAddedString = dateAddedObject.toLocaleString('ro-RO', {timeZone: 'Europe/Bucharest'});
+
     const imageUrl = hasImages ? `${root}/${mainImage}` : 'https://via.placeholder.com/150';
 
     return (
@@ -26,7 +28,7 @@ function Car({data: {Title, _id, dateAdded, price, adSource, mainImage, hasImage
                     </section>
                     <section className="car-ad__details-lower">
                         <div className="date">
-                            {formatedDate}
+                            {dateAddedString}
                         </div>
                         {price && <div className="car-ad__price">
                             {price} €

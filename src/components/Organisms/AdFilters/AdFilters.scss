@@ -14,10 +14,14 @@
 
         }
     }
+    &__input-group{
+        text-align: left;   
+    }
     &__row{
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        margin-bottom: 5px;
         > div{
             flex: 1;
             margin-right: 10px;

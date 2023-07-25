@@ -32,6 +32,7 @@ const AdFilters = ({onSearch}) => {
     
     return (
         <div className="filter-ads__wrapper">
+            
             <Form>
                 <div className="filter-ads__row">
                     <Form.Group className="filter-ads__input-group">
@@ -43,12 +44,15 @@ const AdFilters = ({onSearch}) => {
                         <Form.Control type="number" placeholder="Pret pana la" onChange={(e) => updateSearchProperty('priceTo', e.target.value)} />
                     </Form.Group>
                 </div>
-                {model && <div className="filter-ads__group">
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label className="filter-ads__group-label">Marca</Form.Label>
-                        <SelectList initialStateText="Selecteaza modelul" values={model.allowedValues} onSelect={(value) => updateSearchProperty('model', value)} />
-                    </Form.Group>
-                </div>}
+                <div className="filters-ads__row">
+                    {model && <div className="filter-ads__group">
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Label className="filter-ads__group-label">Modelul</Form.Label>
+                            <SelectList initialStateText="Selecteaza modelul" values={model.allowedValues} onSelect={(value) => updateSearchProperty('model', value)} />
+                        </Form.Group>
+                    </div>}
+                </div>
+               
             </Form>
             <Button onClick={() => searchAdsWithExistingConfiguration(searchSettings)} className="filter-ads__search-btn" >Cauta anunturi</Button>
         </div>
