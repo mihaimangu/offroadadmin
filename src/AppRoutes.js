@@ -14,9 +14,9 @@ function AppRoutes() {
     const location = useLocation();
 
   useEffect(() => {
-    console.log('location changed', location)
-    const pathname = {location}
-
+      const {pathname} = location;
+      console.log('location changed', {pathname})
+      
     if(isProduction){
         ReactGA.send({ hitType: "pageview", page: pathname, title: "Custom Page" });
     }
