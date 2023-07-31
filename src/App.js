@@ -25,22 +25,18 @@ function App() {
     const isProduction = process.env.NODE_ENV === 'production';
     console.log('isProduction', isProduction)
     setIsProduction(isProduction);
+
+    if(isProduction){
+        ReactGA.initialize(TRACKING_ID);
+    }
   }, []);
 
-  useEffect(() => {
-    ReactGA.initialize(TRACKING_ID);
-    ReactGA.pageview(window.location.pathname + window.location.search);
-  }, []);
 
-  const trackPageview = () => {
-    ReactGA.set({ page: window.location.pathname });
-    ReactGA.pageview(window.location.pathname);
-  };
   
 
   return <div className="App">
      <SettingsContext>
-     <Router onUpdate={trackPageview}>
+     <Router >
           <AppHeader />
           <section className="main-content-wrapper">
             <Routes>
