@@ -10,42 +10,20 @@ import AppFooter from 'components/Organisms/AppFooter/AppFooter';
 import JobsPage from './components/Pages/Jobs';
 import List from './components/Pages/AdList/carlist';
 import ModelPage from './components/Pages/Model/ModelPage';
+import AppRoutes from './AppRoutes';
 
-import { BrowserRouter as Router, Route, LinkProps, Routes, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, LinkProps, Routes, Link, useNavigation } from 'react-router-dom';
 import SettingsContext from 'context/SettingsContext';
-
-const TRACKING_ID = "G-0QER2JE1YS"; 
 
 
 function App() {
-
-  const [isProduction, setIsProduction] = useState(false);
-
-  useEffect(() => {
-    const isProduction = process.env.NODE_ENV === 'production';
-    console.log('isProduction', isProduction)
-    setIsProduction(isProduction);
-
-    if(isProduction){
-        ReactGA.initialize(TRACKING_ID);
-    }
-  }, []);
-
-
-  
 
   return <div className="App">
      <SettingsContext>
      <Router >
           <AppHeader />
           <section className="main-content-wrapper">
-            <Routes>
-                <Route path="/" element={<List />} />
-                <Route path="/anunturi" element={<List />} />
-                <Route path="/anunturi/:id" element={<ModelPage />} />
-                <Route path="/ad/:id" element={<SingleAd />} />
-                <Route path="/jobs/" element={<JobsPage />} />
-            </Routes>
+            <AppRoutes />
           </section>
           <AppFooter />
       </Router>
