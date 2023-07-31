@@ -9,6 +9,7 @@ import LoadingWrapper from 'components/Molecules/LoadingWrapper';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 import Button from 'react-bootstrap/Button';
+import ReactGA from 'react-ga4';
 
 import Table from 'react-bootstrap/Table';
 
@@ -29,7 +30,7 @@ function DetailsTable({details}){
     </div>
 }
 
-function SingleAdDisplay({adData}){
+function SingleAdDisplay({id, adData}){
 
     const translations = useContext(TranslationContext);
 
@@ -62,7 +63,7 @@ function SingleAdDisplay({adData}){
         {adSource && <h4>Preluat din {adSource}</h4>}
         
         {hasDetails && <DetailsTable details={detailsArray} />}
-        <Button href={link}>Vezi anuntul original</Button>
+        <Button onClick={() => ReactGA.send({hitType: "clickexternal", title: id })} href={link}>Vezi anuntul original</Button>
        
     </div>
 }
@@ -124,7 +125,7 @@ function SingleAd(){
 
     return <div className="single-ad__wrapper">
         
-        {loading ? <LoadingWrapper /> : <SingleAdDisplay adData={adData} />}
+        {loading ? <LoadingWrapper /> : <SingleAdDisplay id={id} adData={adData} />}
         {imageList.length > 0 && <div className="single-ad__images-wrapper">
             <Carousel>
                 {imageList.map((image, index) => {
