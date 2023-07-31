@@ -1,4 +1,6 @@
 import React, {useState, useEffect} from 'react';
+import ReactGA from 'react-ga';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Home from './components/Home';
@@ -12,12 +14,33 @@ import ModelPage from './components/Pages/Model/ModelPage';
 import { BrowserRouter as Router, Route, LinkProps, Routes, Link } from 'react-router-dom';
 import SettingsContext from 'context/SettingsContext';
 
+const TRACKING_ID = "G-0QER2JE1YS"; 
+
 
 function App() {
 
+  const [isProduction, setIsProduction] = useState(false);
+
+  useEffect(() => {
+    const isProduction = process.env.NODE_ENV === 'production';
+    console.log('isProduction', isProduction)
+    setIsProduction(isProduction);
+  }, []);
+
+  useEffect(() => {
+    ReactGA.initialize(TRACKING_ID);
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }, []);
+
+  const trackPageview = () => {
+    ReactGA.set({ page: window.location.pathname });
+    ReactGA.pageview(window.location.pathname);
+  };
+  
+
   return <div className="App">
      <SettingsContext>
-     <Router>
+     <Router onUpdate={trackPageview}>
           <AppHeader />
           <section className="main-content-wrapper">
             <Routes>

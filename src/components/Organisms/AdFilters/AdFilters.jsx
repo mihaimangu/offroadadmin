@@ -7,8 +7,8 @@ import { FiltersContext } from 'context/SettingsContext';
 
 function SelectList({initialStateText, values, ariaLabel = 'default example', onSelect}) {
     return (
-      <Form.Select aria-label={ariaLabel} onChange={(e) => onSelect(e.target.value)}>
-        <option value="" disabled selected>{initialStateText}</option>
+      <Form.Select aria-label={ariaLabel}   onChange={(e) => onSelect(e.target.value)}>
+        <option value="" disabled defaultValue={initialStateText}>{initialStateText}</option>
         {values.map((value) => {
             return <option key={value}>{value}</option>
         })}
