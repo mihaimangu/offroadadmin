@@ -10,6 +10,8 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from 'react-responsive-carousel';
 import Button from 'react-bootstrap/Button';
 import ReactGA from 'react-ga4';
+import { Link } from 'react-router-dom';
+
 
 import Table from 'react-bootstrap/Table';
 
@@ -55,6 +57,9 @@ function SingleAdDisplay({id, adData}){
     })
     
     return <div className="single-ad__display-wrapper">
+        <Link to="/anunturi" className="single-ad__back-button">
+            <p>  &#8592; Inapoi la anunturi</p>
+        </Link>
         <h2>{Title}</h2>
         {price && <h3>Pret: {price} €</h3>}
         <p>Data adaugarii: {dateAddedString}</p>
