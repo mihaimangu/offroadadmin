@@ -1,19 +1,18 @@
 import React, {useEffect, useState, useContext} from 'react';
 import { TranslationContext } from 'context/SettingsContext';
-import { useParams } from 'react-router-dom'; 
+import { useParams, Link } from 'react-router-dom'; 
 import { root, getSingleOffroadAd, getSingleOffroadAdImages, scrapeSingleOffroadAd } from '../../../api/admin';
 import style from './SingleAd.scss'
 import { stripHtml } from "string-strip-html";
 import LoadingWrapper from 'components/Molecules/LoadingWrapper';
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from 'react-responsive-carousel';
 import Button from 'react-bootstrap/Button';
 import ReactGA from 'react-ga4';
-import { Link } from 'react-router-dom';
 
 
 import Table from 'react-bootstrap/Table';
+import AdGallery from './AdImageGallery';
 
 
 function DetailsTable({details}){
@@ -130,16 +129,15 @@ function SingleAd(){
 
     return <div className="single-ad__wrapper">
         
-        {loading ? <LoadingWrapper /> : <SingleAdDisplay id={id} adData={adData} />}
-        {imageList.length > 0 && <div className="single-ad__images-wrapper">
-            <Carousel>
-                {imageList.map((image, index) => {
-                    return <div className="single-ad__carousel-image" key={index}>
-                        <img src={`${root}/${image}`} alt="ad image" />
-                    </div>
-                })}  
-            </Carousel>
+       
+        {loading ? <LoadingWrapper /> : <div>
+            <SingleAdDisplay id={id} adData={adData} />
+            {imageList.length > 0 && <div className="single-ad__images-wrapper">
+                <AdGallery images={imageList} root={root} />
+            </div>}
         </div>}
+      
+      
         <Button variant="outline-light" onClick={scrapeAd} className="btn">Scrape ad data</Button>
 
     </div>

@@ -7,14 +7,16 @@
         flex-direction: column;
         align-items: center;
         font-size:18px;
-        padding: 10px 30px;
         max-width: 1200px;
+        width: 90%;
+        box-sizing: border-box;
 
     }
 
     &__display-wrapper{
         text-align: left;
         width: 100%;
+        margin-bottom: 20px;
     }
 
     &__source-link{
@@ -23,11 +25,21 @@
     }
 
     &__images-wrapper{
-        max-width: 95vw;
+        max-width: 90vw;
+        margin-bottom: 15px;
     }
 
     &__back-button{
         text-decoration: underline;
     }
 
+}
+
+
+@media  screen and (min-width: 500px) {
+    .single-ad{
+        &__images-wrapper{
+            // max-width: 90vw;
+        }
+    }
 }

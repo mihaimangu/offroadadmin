@@ -47,7 +47,6 @@ img{
 
 .main-content-wrapper{
   min-height: 70vh;
-  padding: 0px 10px;
   display: flex;
   justify-content: center;
 }
