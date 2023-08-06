@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import ReactGA from 'react-ga4';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
+import './App.scss';
 import Home from './components/Home';
 import SingleAd from './components/Pages/SingleAd/SingleAd'; 
 import AppHeader from './components/Organisms/AppHeader/AppHeader';

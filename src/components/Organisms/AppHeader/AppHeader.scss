@@ -13,3 +13,20 @@
         margin-right: 10px;
     }
 }
+
+.side-menu{
+    &__wrapper{
+        color: black;
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+        row-gap: 10px;
+    }
+    &__item{
+        color: black;
+        font-size: 20px;
+        a{
+            color: black;
+        }
+    }
+}

@@ -39,7 +39,8 @@
 @media  screen and (min-width: 500px) {
     .single-ad{
         &__images-wrapper{
-            // max-width: 90vw;
+            max-width: 1000px;
+            width: 90vw;
         }
     }
 }
