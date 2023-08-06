@@ -1,4 +1,5 @@
 import axios from "axios";
+import Cookies from 'js-cookie';
 
 
 const isProduction = process.env.NODE_ENV === "production";
@@ -47,4 +48,25 @@ export const addCrawlJob = (name, url) => {
     }
 
     return axios.post(root + " /api/crawl-jobs", requestBody);
+}
+
+export const login = (username, password) => {
+    const requestBody = {
+        username,
+        password
+    }
+
+    return axios.post(root + "/api/login", requestBody);
+}
+
+export const checkPrivateRoute = () => {
+    // token is a JWT token, use that as bearer
+    // get the token from cookies
+    const token = Cookies.get('token');
+
+    return axios.get(root + "/api/protected", {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    });
 }

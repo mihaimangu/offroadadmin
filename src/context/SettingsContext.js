@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { getTranslations, getFilters } from 'api/admin';
+import { getTranslations, getFilters } from 'api/general';
 
 export const TranslationContext = React.createContext();
 export const FiltersContext = React.createContext();

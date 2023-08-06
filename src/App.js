@@ -14,20 +14,22 @@ import AppRoutes from './AppRoutes';
 
 import { BrowserRouter as Router, Route, LinkProps, Routes, Link, useNavigation } from 'react-router-dom';
 import SettingsContext from 'context/SettingsContext';
-
+import UserContext from 'context/UserContext';
 
 function App() {
 
   return <div className="App">
-     <SettingsContext>
-     <Router >
-          <AppHeader />
-          <section className="main-content-wrapper">
-            <AppRoutes />
-          </section>
-          <AppFooter />
-      </Router>
-      </SettingsContext>
+    <UserContext >
+      <SettingsContext>
+        <Router >
+              <AppHeader />
+              <section className="main-content-wrapper">
+                <AppRoutes />
+              </section>
+              <AppFooter />
+          </Router>
+        </SettingsContext>
+      </UserContext>
   </div>
 }
 

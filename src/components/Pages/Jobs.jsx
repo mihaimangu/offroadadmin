@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { getAllCrawlJobs, addCrawlJob } from '../../api/admin';
+import { getAllCrawlJobs, addCrawlJob } from '../../api/general';
 import JobList from '../Organisms/Jobs/JobList';
 
 

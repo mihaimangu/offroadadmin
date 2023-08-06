@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { getList } from "../../../api/admin";
+import { getList } from "../../../api/general";
 import Car from "components/car.jsx";
 import AdFilters from "components/Organisms/AdFilters/AdFilters.jsx";
 import LoadingWrapper from "components/Molecules/LoadingWrapper";

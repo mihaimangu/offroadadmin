@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import dateFormat from 'dateformat';
-import {root} from '../api/admin';
+import {root} from '../api/general';
 
 
 function Car({data: {Title, _id, dateAdded, price, adSource, mainImage, hasImages }}){ 

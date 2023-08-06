@@ -1,7 +1,7 @@
 import React, {useEffect, useState, useContext} from 'react';
 import { TranslationContext } from 'context/SettingsContext';
 import { useParams, Link } from 'react-router-dom'; 
-import { root, getSingleOffroadAd, getSingleOffroadAdImages, scrapeSingleOffroadAd } from '../../../api/admin';
+import { root, getSingleOffroadAd, getSingleOffroadAdImages, scrapeSingleOffroadAd } from '../../../api/general';
 import style from './SingleAd.scss'
 import { stripHtml } from "string-strip-html";
 import LoadingWrapper from 'components/Molecules/LoadingWrapper';
