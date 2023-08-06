@@ -3,6 +3,7 @@ import ReactGA from 'react-ga4';
 import JobsPage from './components/Pages/Jobs';
 import List from './components/Pages/AdList/carlist';
 import ModelPage from './components/Pages/Model/ModelPage';
+import AboutPage  from './components/Pages/About/About';
 import SingleAd from './components/Pages/SingleAd/SingleAd'; 
 import { BrowserRouter as Router, Route, LinkProps, Routes, useLocation } from 'react-router-dom';
 
@@ -32,9 +33,11 @@ function AppRoutes() {
     return   <Routes>
         <Route path="/" element={<List />} />
         <Route path="/anunturi" element={<List />} />
+        <Route path="/despre" element={<AboutPage />} />
+
         <Route path="/anunturi/:id" element={<ModelPage />} />
         <Route path="/ad/:id" element={<SingleAd />} />
-        <Route path="/jobs/" element={<JobsPage />} />
+        <Route path="/admin/jobs/" element={<JobsPage />} />
     </Routes>
 }
 

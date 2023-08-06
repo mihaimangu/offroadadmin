@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 // use absolute path for importing the 4x4logo
-import logo4x4 from 'images/4x4-logo.png';
+import logo4x4 from 'images/jeeplogo.png';
 import './AppHeader.scss';
 
 const AppHeader = () => {

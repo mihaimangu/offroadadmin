@@ -138,7 +138,7 @@ function SingleAd(){
         </div>}
       
       
-        <Button variant="outline-light" onClick={scrapeAd} className="btn">Scrape ad data</Button>
+        {/* <Button variant="outline-light" onClick={scrapeAd} className="btn">Scrape ad data</Button> */}
 
     </div>
 }
