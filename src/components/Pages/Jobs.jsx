@@ -21,7 +21,7 @@ const Jobs = () => {
         <div>
             <h1>Crawl Jobs</h1>
             {jobs.length ?  <JobList data={jobs} /> : <p>There are no jobs</p>}
-           
+           <h2>Add a new job</h2>
         </div>
     );
 }

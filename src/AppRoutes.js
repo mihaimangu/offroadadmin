@@ -2,9 +2,11 @@ import React, {useEffect} from 'react';
 import ReactGA from 'react-ga4';
 import JobsPage from './components/Pages/Jobs';
 import List from './components/Pages/AdList/carlist';
+import AdminAdList from 'components/Pages/AdList/AdminList';
 import ModelPage from './components/Pages/Model/ModelPage';
 import AboutPage  from './components/Pages/About/About';
 import SingleAd from './components/Pages/SingleAd/SingleAd'; 
+import SingleAdAdmin from './components/Pages/SingleAd/AdminSingleAd'; 
 import AdminPage from './components/Pages/Admin/Admin';
 import { BrowserRouter as Router, Route, LinkProps, Routes, useLocation } from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute';
@@ -41,7 +43,10 @@ function AppRoutes() {
         <Route path="/anunturi/:id" element={<ModelPage />} />
         <Route path="/ad/:id" element={<SingleAd />} />
         <Route path="/protected" element={<Protected />} />
+        <Route path="/ad/:id/edit" element={<ProtectedRoute><SingleAdAdmin /></ProtectedRoute>} />
         <Route path="/admin/jobs/" element={<ProtectedRoute><JobsPage /></ProtectedRoute>} />
+        <Route path="/admin/ads" element={<ProtectedRoute><AdminAdList /></ProtectedRoute>} />
+
     </Routes>
 }
 

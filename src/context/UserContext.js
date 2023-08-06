@@ -16,10 +16,7 @@ function UserProvider({children}){
             console.log('res', res)
             if(res.data?.token){
                 const token = res.data.token;
-                // localStorage.setItem('token', token);
-                setCookies('token', res.data.token); // your token
-                // console.log('auth success');
-                // use jwt for auth
+                setCookies('token', token); // your token
             } else {
                 console.log('auth failed')
             }
@@ -29,7 +26,8 @@ function UserProvider({children}){
     }
 
     const logout = () => {
-        ['token', 'name'].forEach(obj => removeCookie(obj)); // remove data save in cookies
+        console.log('performing logout')
+        removeCookie('token');
     };
 
     const value = useMemo(
@@ -37,7 +35,6 @@ function UserProvider({children}){
             cookies,
             login: tryLogin,
             logout,
-            // logout
         }),
         [cookies]
     );

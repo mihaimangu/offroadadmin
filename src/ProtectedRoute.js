@@ -6,6 +6,7 @@ const PrivateRoute = ({ children }) => {
   const { cookies } = useAuth();
 
   const userToken = cookies.token;
+  console.log('userToken', userToken)
 
   return userToken ? <>{children}</> : <Protected />;
 };

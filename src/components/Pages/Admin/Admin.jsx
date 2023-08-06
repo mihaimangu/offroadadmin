@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import {login, checkPrivateRoute} from 'api/general';
+import { Link } from 'react-router-dom';
 import { set } from 'react-ga';
 import {useAuth} from 'context/UserContext';
 
@@ -13,6 +14,7 @@ function AdminHome(){
     const { login: contextLogin, logout } = useAuth();
     const { cookies } = useAuth();
     
+    console.log('token cookie', cookies.token)
     const isAuth = typeof cookies?.token !== 'undefined';
     console.log('is auth?', isAuth);
 
@@ -59,9 +61,17 @@ function AdminHome(){
             </div>}
       
 
-          <Button onClick={checkPrivateRouteHandler}>
-            check private route
-          </Button>
+          {isAuth && <div>
+            <Button onClick={checkPrivateRouteHandler}>
+                check private route
+            </Button>
+            <Link to="/admin/ads">
+                <Button>Admin ads</Button>
+            </Link>
+            <Link to="/admin/jobs">
+                <Button>Admin Jobs</Button>
+            </Link>
+          </div>}
 
           <Button onClick={logout}>
             Logout
