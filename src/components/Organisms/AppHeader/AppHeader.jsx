@@ -40,7 +40,7 @@ const AppHeader = () => {
                     <Offcanvas.Body>
                         <ul className="side-menu__wrapper">
                             <li className="side-menu__item">
-                                <Link to="/" className="side-menu__link" onClick={handleClose}>Anunturi</Link>
+                                <Link to="/anunturi" className="side-menu__link" onClick={handleClose}>Anunturi</Link>
                             </li>
                             <li className="side-menu__item">
                                 <Link to="/despre" className="side-menu__link" onClick={handleClose}>Despre</Link>
