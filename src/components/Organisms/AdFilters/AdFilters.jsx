@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import './AdFilters.scss';
 
 import { FiltersContext } from 'context/SettingsContext';
+import { FaSearch } from "react-icons/fa";
 
 function SelectList({initialStateText, values, ariaLabel = 'default example', onSelect}) {
     return (
@@ -18,16 +19,24 @@ function SelectList({initialStateText, values, ariaLabel = 'default example', on
   
 
 const AdFilters = ({onSearch}) => {
-    let [searchSettings, setSearchSettings] = useState({})
+    const initialState = {};
+    let [searchSettings, setSearchSettings] = useState(initialState)
+    const [isInitialState, setIsInitialState] = useState(true);
     const predefinedFilterSettings = useContext(FiltersContext);
     const {model} = predefinedFilterSettings;
 
     const updateSearchProperty = (property, value) => {
         setSearchSettings({...searchSettings, [property]: value})
+        setIsInitialState(false);
     }
 
     const searchAdsWithExistingConfiguration = () => {
         onSearch(searchSettings)
+    }
+
+    const resetFilters = () => {
+        setSearchSettings(initialState);
+        setIsInitialState(true);
     }
     
     return (
@@ -54,7 +63,13 @@ const AdFilters = ({onSearch}) => {
                 </div>
                
             </Form>
-            <Button onClick={() => searchAdsWithExistingConfiguration(searchSettings)} className="filter-ads__search-btn" >Cauta anunturi</Button>
+
+            <div className="filter-ads__buttons">
+                <Button onClick={() => searchAdsWithExistingConfiguration(searchSettings)} className="filter-ads__search-btn" ><FaSearch />Aplica filtre</Button>
+               {/* <Button disabled={isInitialState} onClick={resetFilters} className="filter-ads__search-btn" >Reseteaza</Button> */}
+
+            </div>
+
         </div>
     );
 }

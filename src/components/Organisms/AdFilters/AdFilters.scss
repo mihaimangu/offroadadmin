@@ -28,5 +28,16 @@
             margin-right:0;
         }
     }
-
+    &__buttons{
+        display: flex;
+        column-gap: 10px;
+        .btn{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            column-gap: 10px;
+        }
+    }
+  
 }

@@ -29,7 +29,6 @@ function PaginationWrapper({currentPage, totalPages, onSetPage}){
 
     useEffect(() => {
         const smartPagination = getSmartPagination({current: currentPage, max: totalPages});
-        console.log('smart pagination', smartPagination)
         setPaginationItems(smartPagination.items);
     }, [currentPage, totalPages])
 
