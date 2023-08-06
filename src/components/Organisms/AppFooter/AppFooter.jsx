@@ -7,6 +7,7 @@ const AppFooter = () => {
         <div className="app-menu__wrapper">
             <div className="app-menu__main">
                 <Link to="/" className="app-menu__item">Anunturi</Link>
+                <Link to="/despre" className="app-menu__item">Despre</Link>
             </div>
         </div> 
         <div className="app-footer__wrapper">

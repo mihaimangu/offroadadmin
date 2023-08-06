@@ -65,7 +65,7 @@ function List(props){
     return (
         <div className="cars-list__wrapper">
             <h2>Gasesti aici anunturi cu masini de teren</h2>
-            <p>Anunturile sunt agregate din platforme precum OLX, Autovit sau LaJumate.</p>
+            <p>Anunturile sunt agregate din platforme precum OLX, Autovit sau LaJumate. Poti folosi optiunile de mai jos pentru a filtra anunturile.</p>
             {isError && <div>error while getting data</div>}
             <AdFilters onSearch={filterAds}  />
             <div className="cars-list__inner-wrapper">
