@@ -77,6 +77,18 @@
         display:flex;
         justify-content: space-between;
     }
+    &__details-row{
+        display: flex;
+        font-size: 14px;
+        column-gap: 10px;
+        > div{
+            display: flex;
+            align-items: center;
+           svg{
+            margin-right: 5px;
+           } 
+        }
+    }
     &__source{
         background: grey;
         display: block;

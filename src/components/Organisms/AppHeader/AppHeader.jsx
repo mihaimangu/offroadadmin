@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import Button from 'react-bootstrap/Button';
 
-import { FaBars } from "react-icons/fa6";
+import { FaBars } from "react-icons/fa";
 
 // use absolute path for importing the 4x4logo
 import logo4x4 from 'images/jeeplogo.png';
