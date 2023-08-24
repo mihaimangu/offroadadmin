@@ -15,6 +15,9 @@
     &__input-group{
         text-align: left;   
     }
+    &__column{
+
+    }
     &__row{
         display: flex;
         flex-direction: row;
@@ -31,6 +34,7 @@
     &__buttons{
         display: flex;
         column-gap: 10px;
+        flex-direction: column;
         .btn{
             display: flex;
             flex-direction: row;
@@ -40,4 +44,30 @@
         }
     }
   
+}
+
+@media screen and (min-width: 1000px)  {
+    .filter-ads{
+        &__wrapper{
+            display: flex;
+            column-gap: 10px;
+            > * {
+                flex: 2;
+            }
+        }
+        &__column{
+            display: flex;
+            flex-direction: column;
+            &:last-of-type{
+                // background: red;
+                flex: 1;
+                justify-content: flex-end;
+            }
+        }
+        &__buttons{
+            width:100%;
+            margin-bottom: 15px;
+        }
+       
+    }
 }

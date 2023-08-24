@@ -3,7 +3,9 @@ import React, {useEffect, useState} from 'react';
 const initialState = {
     priceFrom: "",
     priceTo: "",
-    model: ""
+    model: "",
+    yearBuildFrom: "",
+    yearBuildTo: "",
 };
 export const FiltersContext = React.createContext();
 

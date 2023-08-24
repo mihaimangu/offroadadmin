@@ -25,7 +25,8 @@ function SelectList({ initialStateText, values, currentValue, ariaLabel = 'defau
 const AdFilters = ({onSearch, onReset}) => {
     const {searchSettings, updateSearchSettings, resetSearchSettings, isInitialState} = useContext(FiltersContext);
     const predefinedFilterSettings = useContext(FiltersConfigurationContext);
-    const {model} = predefinedFilterSettings;
+    const [isExpanded, setIsExpanded] = useState(true);
+    const {model, fuelType} = predefinedFilterSettings;
 
     const updateSearchProperty = (property, value) => {
         updateSearchSettings(property, value)
@@ -41,10 +42,21 @@ const AdFilters = ({onSearch, onReset}) => {
       
       }
     
+
+    if(!isExpanded){
+        return (
+            <div className="filter-ads__wrapper">
+                <Button onClick={() => setIsExpanded(true)} className="filter-ads__search-btn" >Filtreaza anunturi</Button>
+            </div>
+        )
+    }
+    
+
     return (
         <div className="filter-ads__wrapper">
             
-            <Form>
+
+            <div className="filter-ads__column">
                 <div className="filter-ads__row">
                     <Form.Group className="filter-ads__input-group">
                         <Form.Label className="filter-ads__group-label">Pret de la</Form.Label>
@@ -55,22 +67,47 @@ const AdFilters = ({onSearch, onReset}) => {
                         <Form.Control type="number" placeholder="Pret pana la" value={searchSettings.priceTo} onChange={(e) => updateSearchProperty('priceTo', e.target.value)} />
                     </Form.Group>
                 </div>
-                <div className="filters-ads__row">
-                    {model && <div className="filter-ads__group">
+                <div className="filter-ads__row">
+                    {fuelType && <div className="filter-ads__group">
                         <Form.Group className="mb-3" controlId="formBasicEmail">
-                            <Form.Label className="filter-ads__group-label">Modelul</Form.Label>
-                            <SelectList initialStateText="Selecteaza modelul" currentValue={searchSettings.model}   values={model.allowedValues} onSelect={(value) => updateSearchProperty('model', value)} />
+                            <Form.Label className="filter-ads__group-label">Combustibil</Form.Label>
+                            <SelectList initialStateText="Selecteaza combustibil" currentValue={searchSettings.fuelType} values={fuelType.allowedValues} onSelect={(value) => updateSearchProperty('fuelType', value)} />
                         </Form.Group>
                     </div>}
                 </div>
-               
-            </Form>
-
-            <div className="filter-ads__buttons">
-                <Button onClick={() => searchAdsWithExistingConfiguration(searchSettings)} className="filter-ads__search-btn" ><FaSearch />Aplica filtre</Button>
-               <Button disabled={isInitialState} onClick={resetFilters} className="filter-ads__search-btn" >Reseteaza</Button>
-
             </div>
+            <div className="filter-ads__column">
+                <div className="filter-ads__row">
+                    <Form.Group className="filter-ads__input-group">
+                        <Form.Label className="filter-ads__group-label">An de la</Form.Label>
+                        <Form.Control type="number" placeholder="An de la" value={searchSettings.yearBuildFrom} onChange={(e) => updateSearchProperty('yearBuildFrom', e.target.value)} />
+                    </Form.Group>
+                    <Form.Group className="filter-ads__input-group">
+                        <Form.Label className="filter-ads__group-label">An pana la</Form.Label>
+                        <Form.Control type="number" placeholder="An pana la" value={searchSettings.yearBuildTo} onChange={(e) => updateSearchProperty('yearBuildTo', e.target.value)} />
+                    </Form.Group>
+                </div>
+                <div className="filter-ads__row">
+                    {model && <div className="filter-ads__group">
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Label className="filter-ads__group-label">Modelul</Form.Label>
+                            <SelectList initialStateText="Selecteaza modelul" currentValue={searchSettings.model} values={model.allowedValues} onSelect={(value) => updateSearchProperty('model', value)} />
+                        </Form.Group>
+                    </div>}
+                </div>
+            
+            </div>
+            <div className="filter-ads__column">
+                <div className="filter-ads__buttons">
+                    <Button disabled={isInitialState} onClick={resetFilters} className="filter-ads__search-btn" >Reseteaza</Button>
+                    <Button onClick={() => searchAdsWithExistingConfiguration(searchSettings)} className="filter-ads__search-btn" ><FaSearch />Aplica filtre</Button>
+
+                </div>
+            </div>
+            
+          
+    
+        
 
         </div>
     );
