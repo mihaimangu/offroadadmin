@@ -3,7 +3,7 @@ import react, {useEffect, useContext} from 'react';
 import List from 'components/Pages/AdList/carlist';
 import { useParams } from 'react-router-dom'; 
 
-import { FiltersContext } from 'context/SettingsContext';
+import { FiltersConfigurationContext } from 'context/SettingsContext';
 
 
 function ModelPage(){
@@ -11,7 +11,7 @@ function ModelPage(){
     const { id } = useParams();
     console.log('modal id is', id)
 
-    const predefinedFilterSettings = useContext(FiltersContext);
+    const predefinedFilterSettings = useContext(FiltersConfigurationContext);
     const filters = predefinedFilterSettings.filters;
 
     const {model} = predefinedFilterSettings;

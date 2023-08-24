@@ -1,12 +1,14 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useContext} from "react";
 import { getList } from "../../../api/general";
 import Car from "components/car.jsx";
 import AdFilters from "components/Organisms/AdFilters/AdFilters.jsx";
 import LoadingWrapper from "components/Molecules/LoadingWrapper";
 import Pagination from "components/Organisms/Pagination/Pagination.jsx";
+import { FiltersContext } from 'context/FiltersContext';
 
 // import cars.scss
 import styles from './cars.scss'
+
 
 
 function List(props){
@@ -14,9 +16,9 @@ function List(props){
     const [isError, setIsError] = useState(false)
     const [cars, setCars] = useState([])
     const [loading, setLoading] = useState(false);
-    const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(15);
-    const [filterSettings, setFilterSettings] = useState({})
+    const {searchSettings, currentPage, setCurrentPage, isInitialState, initialState} = useContext(FiltersContext);
+
 
     const grabAdsFromApi = (settings = {}) => {
         setLoading(true);
@@ -34,32 +36,58 @@ function List(props){
         });
     }
 
-    const filterAds = (searchSettings) => {
-        console.log('searching ads', searchSettings)
-        setFilterSettings(searchSettings);
+    const filterAds = () => {
         setCurrentPage(1);
-        grabAdsFromApi(searchSettings);
+        let searchParams = {
+            ...searchSettings,
+            page: 1,
+        }
+        grabAdsFromApi(searchParams);
+    }
+
+    const resetAndSearch = () => {
+        setCurrentPage(1);
+        grabAdsFromApi(initialState);
     }
 
     const updateCurrentPageandSearchSettings = (page) => {
+        console.log('updateCurrentPageandSearchSettings', page)
         setCurrentPage(page);
+        let searchParams = {
+            ...searchSettings,
+            page
+        }
+        grabAdsFromApi(searchParams);
     }
 
-    useEffect(() => {
+    // useEffect(() => {
+    //     let searchParams = {
+    //         ...searchSettings,
+    //         page: currentPage
+    //     }
+    //     grabAdsFromApi(searchParams)
 
-        let searchParams = {
-            ...filterSettings,
-            page: currentPage
-        }
-        grabAdsFromApi(searchParams)
 
-    }, [currentPage, filterSettings])
+
+    // }, [currentPage])
+
+    
+    // useEffect(() => {
+    //     if (!isInitialState) {
+    //       console.log('Filters have been reset');
+    //       // Perform your action here
+    //     }
+    //   }, [isInitialState]);
  
    useEffect(() => {
         setIsError(false);
 
         setLoading(true);
-        grabAdsFromApi();
+        let searchParams = {
+            ...searchSettings,
+            page: currentPage
+        }
+        grabAdsFromApi(searchParams);
    }, [])
 
     return (
@@ -69,7 +97,7 @@ function List(props){
                 <p>Anunturile sunt agregate din platforme precum OLX, Autovit sau LaJumate. Poti folosi optiunile de mai jos pentru a filtra anunturile.</p>
             </div>
             {isError && <div>error while getting data</div>}
-            <AdFilters onSearch={filterAds}  />
+            <AdFilters onSearch={filterAds} onReset={resetAndSearch}  />
             <div className="cars-list__inner-wrapper">
                 {loading ? <LoadingWrapper /> : cars.length && cars.map((car) => {
                     return <Car key={car._id} data={car} />

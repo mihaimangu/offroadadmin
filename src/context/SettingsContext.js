@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { getTranslations, getFilters } from 'api/general';
 
 export const TranslationContext = React.createContext();
-export const FiltersContext = React.createContext();
+export const FiltersConfigurationContext = React.createContext();
 
 function SettingsProvider({children}){
     const [translations, setTranslations] = useState({});
@@ -39,11 +39,11 @@ function SettingsProvider({children}){
     }, [])
 
     return (<>
-        <FiltersContext.Provider value={filters}>
+        <FiltersConfigurationContext.Provider value={filters}>
             <TranslationContext.Provider value={translations}>
                 {children}
             </TranslationContext.Provider>
-        </FiltersContext.Provider>
+        </FiltersConfigurationContext.Provider>
     </>)
 }
 

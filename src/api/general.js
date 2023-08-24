@@ -6,7 +6,17 @@ const isProduction = process.env.NODE_ENV === "production";
 export const root = isProduction ?  "https://masinideteren.ro:4000" : "http://localhost:4000";
 
 export const getList = (settings) => {
-    return axios.get(root + "/api/offroad-cars", { params: settings });
+    // filter the settings that have "" as value
+
+    const sanitizedSettings = Object.keys(settings).reduce((acc, key) => {
+        if(settings[key] !== ""){
+            acc[key] = settings[key];
+        }
+        return acc;
+    }, {});
+
+
+    return axios.get(root + "/api/offroad-cars", { params: sanitizedSettings });
 }
 
 export const getSingleOffroadAd = (id) => {

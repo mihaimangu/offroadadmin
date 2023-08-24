@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import { Link } from 'react-router-dom';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import Button from 'react-bootstrap/Button';
-
 import { FaBars } from "react-icons/fa";
+import {resetSearchSettings, FiltersContext} from 'context/FiltersContext';
 
 // use absolute path for importing the 4x4logo
 import logo4x4 from 'images/jeeplogo.png';
@@ -11,9 +11,15 @@ import './AppHeader.scss';
 
 const AppHeader = () => {
 
+    const {resetSearchSettings} = useContext(FiltersContext);
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
+    const handleMenuClick = () =>{
+        resetSearchSettings();
+         setShow(false);
+    }
+
 
     const toggleMenu = () => {setShow(!show)};
 
@@ -27,10 +33,6 @@ const AppHeader = () => {
                         <img src={logo4x4} className="App-logo" alt="logo" />
                     </Link>
                 </div>
-
-           
-
-            
                 
             </header>
             <Offcanvas show={show} onHide={handleClose}>
@@ -40,10 +42,10 @@ const AppHeader = () => {
                     <Offcanvas.Body>
                         <ul className="side-menu__wrapper">
                             <li className="side-menu__item">
-                                <Link to="/anunturi" className="side-menu__link" onClick={handleClose}>Anunturi</Link>
+                                <Link to="/anunturi" className="side-menu__link" onClick={handleMenuClick}>Anunturi</Link>
                             </li>
                             <li className="side-menu__item">
-                                <Link to="/despre" className="side-menu__link" onClick={handleClose}>Despre</Link>
+                                <Link to="/despre" className="side-menu__link" onClick={handleMenuClick}>Despre</Link>
                             </li>
                         </ul>
 
