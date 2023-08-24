@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import { Button } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import './AdFilters.scss';
@@ -23,10 +23,12 @@ function SelectList({ initialStateText, values, currentValue, ariaLabel = 'defau
   
 
 const AdFilters = ({onSearch, onReset}) => {
-    const {searchSettings, updateSearchSettings, resetSearchSettings, isInitialState} = useContext(FiltersContext);
+    const {searchSettings, updateSearchSettings, resetSearchSettings, isInitialState, isExpanded, setIsExpanded} = useContext(FiltersContext);
     const predefinedFilterSettings = useContext(FiltersConfigurationContext);
-    const [isExpanded, setIsExpanded] = useState(true);
     const {model, fuelType} = predefinedFilterSettings;
+
+
+
 
     const updateSearchProperty = (property, value) => {
         updateSearchSettings(property, value)
