@@ -25,12 +25,7 @@ function FiltersProvider({children}){
         };
     
         handleResize();
-    
-        window.addEventListener('resize', handleResize);
-    
-        return () => {
-          window.removeEventListener('resize', handleResize);
-        };
+  
       }, []);
 
     const updateSearchSettings = (property, value) => {
