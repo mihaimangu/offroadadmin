@@ -71,6 +71,9 @@ function AdminHome(){
             <Link to="/admin/jobs">
                 <Button>Admin Jobs</Button>
             </Link>
+            <Link to="/admin/customlists">
+                <Button>Custom Lists</Button>
+            </Link>
           </div>}
 
           <Button onClick={logout}>

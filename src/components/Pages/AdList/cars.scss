@@ -31,6 +31,7 @@
             font-size: 14px;
             color: gray;
         }
+    
     }
     &__admin-details{
         display: flex;
@@ -47,6 +48,15 @@
         color: rgb(184, 184, 184);
         font-size:14px;
         font-weight: 700;
+    }
+    &__wrapper{
+        position: relative;
+        .dropdown{
+            display: block;
+            position: absolute;
+            z-index: 2;
+            right: 0;
+        }
     }
     &__image{
         display: block;

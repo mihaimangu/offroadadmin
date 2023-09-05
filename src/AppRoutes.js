@@ -1,5 +1,8 @@
 import React, {useEffect} from 'react';
+import { BrowserRouter as Router, Route, LinkProps, Routes, useLocation } from 'react-router-dom';
+import ProtectedRoute from './ProtectedRoute';
 import ReactGA from 'react-ga4';
+
 import JobsPage from './components/Pages/Jobs';
 import List from './components/Pages/AdList/carlist';
 import AdminAdList from 'components/Pages/AdList/AdminList';
@@ -8,9 +11,8 @@ import AboutPage  from './components/Pages/About/About';
 import SingleAd from './components/Pages/SingleAd/SingleAd'; 
 import SingleAdAdmin from './components/Pages/SingleAd/AdminSingleAd'; 
 import AdminPage from './components/Pages/Admin/Admin';
-import { BrowserRouter as Router, Route, LinkProps, Routes, useLocation } from 'react-router-dom';
-import ProtectedRoute from './ProtectedRoute';
 import Protected from 'components/Pages/Protected/Protected';
+import CustomLists from 'components/Pages/CustomLists/AdminCustomLists';
 
 const TRACKING_ID = "G-0QER2JE1YS"; 
 const isProduction = process.env.NODE_ENV === 'production';
@@ -46,6 +48,7 @@ function AppRoutes() {
         <Route path="/ad/:id/edit" element={<ProtectedRoute><SingleAdAdmin /></ProtectedRoute>} />
         <Route path="/admin/jobs/" element={<ProtectedRoute><JobsPage /></ProtectedRoute>} />
         <Route path="/admin/ads" element={<ProtectedRoute><AdminAdList /></ProtectedRoute>} />
+        <Route path="/admin/customlists" element={<ProtectedRoute><CustomLists /></ProtectedRoute>} />
 
     </Routes>
 }

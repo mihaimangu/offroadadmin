@@ -3,19 +3,15 @@ import ReactGA from 'react-ga4';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
-import Home from './components/Home';
-import SingleAd from './components/Pages/SingleAd/SingleAd'; 
 import AppHeader from './components/Organisms/AppHeader/AppHeader';
 import AppFooter from 'components/Organisms/AppFooter/AppFooter';
-import JobsPage from './components/Pages/Jobs';
-import List from './components/Pages/AdList/carlist';
-import ModelPage from './components/Pages/Model/ModelPage';
 import AppRoutes from './AppRoutes';
 
 import { BrowserRouter as Router, Route, LinkProps, Routes, Link, useNavigation } from 'react-router-dom';
 import SettingsContext from 'context/SettingsContext';
 import FiltersContext from 'context/FiltersContext';
 import UserContext from 'context/UserContext';
+import AdminContext from 'context/AdminContext';
 
 function App() {
 
@@ -23,6 +19,7 @@ function App() {
     <FiltersContext>
       <UserContext >
         <SettingsContext>
+          <AdminContext>
           <Router >
                 <AppHeader />
                 <section className="main-content-wrapper">
@@ -30,6 +27,7 @@ function App() {
                 </section>
                 <AppFooter />
             </Router>
+            </AdminContext>
           </SettingsContext>
         </UserContext>
       </FiltersContext>

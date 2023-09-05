@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { getList } from "../../../api/general";
+import { getList, hideSingleAd, showSingleAd } from "../../../api/general";
 import Car from "components/Organisms/AdminAdCard/AdminAdCard.jsx";
 import AdFilters from "components/Organisms/AdFilters/AdFilters.jsx";
 import LoadingWrapper from "components/Molecules/LoadingWrapper";
@@ -61,7 +61,6 @@ function AdminAdList(props){
     }
 
     useEffect(() => {
-
         let searchParams = {
             ...filterSettings,
             page: currentPage,
@@ -77,6 +76,28 @@ function AdminAdList(props){
         grabAdsFromApi();
    }, [])
 
+   const onShow = (itemId) => {
+        console.log('show item', itemId)
+        showSingleAd(itemId).then(res => {
+            console.log('item shown', res)
+        }).catch(err => {
+            console.log('error showing item', err)
+        })
+   }
+
+   const onHide = (itemId) => {
+        console.log('hide item', itemId)
+        hideSingleAd(itemId).then(res => {
+            console.log('item hidden', res)
+        }).catch(err => {
+            console.log('error hiding item', err)
+        })
+   }
+
+   const onAddToCustomList = (itemId, listId) => {
+        console.log('add to custom list', itemId, listId)
+   }
+
     return (
         <div className="cars-list__wrapper">
             <h1>Administreaza anunturi</h1>
@@ -89,7 +110,7 @@ function AdminAdList(props){
             </div>
             <div className="cars-list__inner-wrapper">
                 {loading ? <LoadingWrapper /> : cars.length && cars.map((car) => {
-                    return <Car key={car._id} data={car} />
+                    return <Car key={car._id} data={car} onShow={onShow} onHide={onHide} onAddToList={onAddToCustomList} />
                 })}
             </div>
        

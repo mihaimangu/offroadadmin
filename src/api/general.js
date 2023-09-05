@@ -15,8 +15,11 @@ export const getList = (settings) => {
         return acc;
     }, {});
 
-
     return axios.get(root + "/api/offroad-cars", { params: sanitizedSettings });
+}
+
+export const getAllCustomLists = () => {
+    return axios.get(root + "/api/customlist");
 }
 
 export const getSingleOffroadAd = (id) => {
@@ -31,6 +34,14 @@ export const scrapeSingleOffroadAd = (id) => {
     return axios.post(root + '/api/scrape-offroad-car-ad', {
         id
     })
+}
+
+export const hideSingleAd = (id) => {
+    return axios.post(root + `/api/offroad-car/${id}/hide`);
+}
+
+export const showSingleAd = (id) => {
+    return axios.post(root + `/api/offroad-car/${id}/show`);
 }
 
 export const getTranslations = () => {
