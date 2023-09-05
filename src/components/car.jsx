@@ -5,7 +5,7 @@ import {root} from '../api/general';
 import { FaGasPump, FaRegCalendarAlt, FaCogs } from "react-icons/fa";
 
 
-function Car({data: {Title, _id, dateAdded, price, adSource, mainImage, hasImages, details = {} }}){ 
+function Car({data: {Title, _id, dateAdded, price, adSource, mainImage, hasImages, details = {}, hidden }}){ 
 
     const {fuelType, yearBuild, engineCapacity } = details;
 

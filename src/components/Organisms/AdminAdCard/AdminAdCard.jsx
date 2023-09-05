@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import dateFormat from 'dateformat';
 import {root} from 'api/general';
 import Dropdown from 'react-bootstrap/Dropdown';
+import { FaEye } from 'react-icons/fa';
+import classNames from 'classnames';
 
-function Car({data: {Title, _id, dateAdded, price, adSource, mainImage, hasImages }, onShow, onHide, onAddToList}){ 
+function Car({data: {Title, _id, dateAdded, price, adSource, mainImage, hasImages, hidden }, onShow, onHide, onAddToList}){ 
 
     const dateAddedObject = new Date(dateAdded);
     const dateAddedString = dateAddedObject.toLocaleString('ro-RO', {timeZone: 'Europe/Bucharest'});
@@ -16,47 +18,50 @@ function Car({data: {Title, _id, dateAdded, price, adSource, mainImage, hasImage
 
     return (
         <div className="car-ad__wrapper">
-        <Dropdown>
-            <Dropdown.Toggle variant="success" id="dropdown-basic">
-                Actiuni
-            </Dropdown.Toggle>
+            {hidden && <div className="car-ad__hidden-mark">
+                <FaEye />
+            </div>}
+            <Dropdown>
+                <Dropdown.Toggle variant="success" id="dropdown-basic">
+                    Actiuni
+                </Dropdown.Toggle>
 
-            <Dropdown.Menu>
-                <Dropdown.Item onClick={() => onShow(_id)} >Afiseaza</Dropdown.Item>
-                <Dropdown.Item onClick={() => onHide(_id)} >Ascunde</Dropdown.Item>
-                <Dropdown.Item onClick={() => onAddToList(_id) } >Adauga in lista</Dropdown.Item>
-            </Dropdown.Menu>
+                <Dropdown.Menu>
+                    <Dropdown.Item onClick={() => onShow(_id)} >Afiseaza</Dropdown.Item>
+                    <Dropdown.Item onClick={() => onHide(_id)} >Ascunde</Dropdown.Item>
+                    <Dropdown.Item onClick={() => onAddToList(_id) } >Adauga in lista</Dropdown.Item>
+                </Dropdown.Menu>
 
-        </Dropdown>
-        <Link to={`/ad/${_id}/edit`}>
-            <div className="cars-list__single-ad">
-                <div className="car-ad__image" style={imageStyle}>
-                    
-                    {/* <img src={imageUrl} alt="car" /> */}
-                    {adSource && <div className="car-ad__source">
-                        {adSource}
-                    </div>}
-                </div>
-                <div className='car-ad__details'>
-                    <section >
-                        <div className="car-ad__title">
-                            {Title}
-                        </div>
-                      
-                    </section>
-                    <section className="car-ad__details-lower">
-                        <div className="date">
-                            {dateAddedString}
-                        </div>
-                        {price && <div className="car-ad__price">
-                            {price} €
+            </Dropdown>
+            <Link to={`/ad/${_id}/edit`}>
+                <div className={classNames("cars-list__single-ad", {'hidden': hidden})}>
+                    <div className="car-ad__image" style={imageStyle}>
+                        
+                        {/* <img src={imageUrl} alt="car" /> */}
+                        {adSource && <div className="car-ad__source">
+                            {adSource}
                         </div>}
-                       
-                    </section>
+                    </div>
+                    <div className='car-ad__details'>
+                        <section >
+                            <div className="car-ad__title">
+                                {Title}
+                            </div>
+                        
+                        </section>
+                        <section className="car-ad__details-lower">
+                            <div className="date">
+                                {dateAddedString}
+                            </div>
+                            {price && <div className="car-ad__price">
+                                {price} €
+                            </div>}
+                        
+                        </section>
+                    </div>
+                
                 </div>
-             
-            </div>
-        </Link>
+            </Link>
         </div>
     )
 }
