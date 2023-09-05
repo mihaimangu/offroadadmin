@@ -1,9 +1,11 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useContext} from "react";
 import { getList, hideSingleAd, showSingleAd } from "../../../api/general";
 import Car from "components/Organisms/AdminAdCard/AdminAdCard.jsx";
 import AdFilters from "components/Organisms/AdFilters/AdFilters.jsx";
 import LoadingWrapper from "components/Molecules/LoadingWrapper";
 import Pagination from "components/Organisms/Pagination/Pagination.jsx";
+import AddToListModal from "components/Organisms/AddToListModal/AddToListModal";
+import {AdminContext} from "context/AdminContext";
 
 // import cars.scss
 import styles from './cars.scss'
@@ -20,6 +22,9 @@ function AdminAdList(props){
     const [hiddenCarsCount, setHiddenCarsCount] = useState(0);
     const [unscrapedCarsCount, setUnscrapedCarsCount] = useState(0);
     const [totalCount, setTotalCount] = useState(0);
+    const [showAddToListModal, setShowAddToListModal] = useState(false);
+
+    const {customLists} = useContext(AdminContext);
 
 
     const grabAdsFromApi = (settings = {}) => {
@@ -94,9 +99,12 @@ function AdminAdList(props){
         })
    }
 
-   const onAddToCustomList = (itemId, listId) => {
-        console.log('add to custom list', itemId, listId)
+   const showCustomListModal = (itemId) => {
+        console.log('add to custom list', itemId);
+        setShowAddToListModal(true);
    }
+
+   
 
     return (
         <div className="cars-list__wrapper">
@@ -110,11 +118,11 @@ function AdminAdList(props){
             </div>
             <div className="cars-list__inner-wrapper">
                 {loading ? <LoadingWrapper /> : cars.length && cars.map((car) => {
-                    return <Car key={car._id} data={car} onShow={onShow} onHide={onHide} onAddToList={onAddToCustomList} />
+                    return <Car key={car._id} data={car} onShow={onShow} onHide={onHide} onAddToList={showCustomListModal} />
                 })}
             </div>
-       
             <Pagination currentPage={currentPage} totalPages={totalPages} onSetPage={updateCurrentPageandSearchSettings} />    
+            <AddToListModal show={showAddToListModal} options={customLists} onClose={() => setShowAddToListModal(false)}  />
         </div>
     )
 }
