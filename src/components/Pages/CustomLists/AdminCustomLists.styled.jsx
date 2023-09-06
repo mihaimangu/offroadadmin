@@ -23,6 +23,9 @@ export const AdminCustomListsWrapper = styled.div`
     /* display: flex; */
     .custom-list__table{
         display: flex;
-
+        flex-direction: column;
+    }
+    .custom-list__new-btn{
+        width: 100%;
     }
 `;

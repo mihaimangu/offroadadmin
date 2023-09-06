@@ -22,6 +22,18 @@ export const getAllCustomLists = () => {
     return axios.get(root + "/api/customlist");
 }
 
+export const addNewCustomList = (name) => {
+    return axios.post(root + "/api/customlist", {
+        listname: name
+    });
+}
+
+export const addNewItemToCustomList = (listId, item) => {
+    return axios.put(root + `/api/customlist/${listId}`, {
+        item
+    });
+}
+
 export const getSingleOffroadAd = (id) => {
     return axios.get(root + `/api/offroad-car?id=${id}`)
 }
