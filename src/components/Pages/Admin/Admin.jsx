@@ -14,10 +14,7 @@ function AdminHome(){
     const { login: contextLogin, logout } = useAuth();
     const { cookies } = useAuth();
     
-    console.log('token cookie', cookies.token)
     const isAuth = typeof cookies?.token !== 'undefined';
-    console.log('is auth?', isAuth);
-
 
     const submitHandler= async () =>{
         console.log('submit ', username, password);

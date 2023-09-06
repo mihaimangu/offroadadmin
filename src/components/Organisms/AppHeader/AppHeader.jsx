@@ -4,6 +4,7 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import Button from 'react-bootstrap/Button';
 import { FaBars } from "react-icons/fa";
 import {resetSearchSettings, FiltersContext} from 'context/FiltersContext';
+import {useAuth} from 'context/UserContext';
 
 // use absolute path for importing the 4x4logo
 import logo4x4 from 'images/jeeplogo.png';
@@ -13,6 +14,9 @@ const AppHeader = () => {
 
     const {resetSearchSettings} = useContext(FiltersContext);
     const [show, setShow] = useState(false);
+
+    const { cookies } = useAuth();
+    const isAuth = typeof cookies?.token !== 'undefined';
 
     const handleClose = () => setShow(false);
     const handleMenuClick = () =>{
@@ -47,6 +51,9 @@ const AppHeader = () => {
                             <li className="side-menu__item">
                                 <Link to="/despre" className="side-menu__link" onClick={handleMenuClick}>Despre</Link>
                             </li>
+                            {isAuth && <li className="side-menu__item">
+                                <Link to="/admin" className="side-menu__link" onClick={handleMenuClick}>Admin</Link>
+                                </li>}
                         </ul>
 
                     </Offcanvas.Body>

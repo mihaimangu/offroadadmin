@@ -1,5 +1,5 @@
 import React, {useEffect, useState, useContext} from "react";
-import { getList, hideSingleAd, showSingleAd } from "../../../api/general";
+import { getList, hideSingleAd, showSingleAd, addNewItemToCustomList } from "../../../api/general";
 import Car from "components/Organisms/AdminAdCard/AdminAdCard.jsx";
 import AdFilters from "components/Organisms/AdFilters/AdFilters.jsx";
 import LoadingWrapper from "components/Molecules/LoadingWrapper";
@@ -23,6 +23,7 @@ function AdminAdList(props){
     const [unscrapedCarsCount, setUnscrapedCarsCount] = useState(0);
     const [totalCount, setTotalCount] = useState(0);
     const [showAddToListModal, setShowAddToListModal] = useState(false);
+    const [itemToBeAddedToList, setItemToBeAddedToList] = useState(null);
 
     const {customLists} = useContext(AdminContext);
 
@@ -102,7 +103,13 @@ function AdminAdList(props){
    const showCustomListModal = (itemId) => {
         console.log('add to custom list', itemId);
         setShowAddToListModal(true);
+        setItemToBeAddedToList(itemId);
    }
+
+   const submitItemToList = async (listId) => {
+        setShowAddToListModal(false);
+        const newItem = await addNewItemToCustomList(listId, itemToBeAddedToList);
+   };
 
    
 
@@ -122,7 +129,7 @@ function AdminAdList(props){
                 })}
             </div>
             <Pagination currentPage={currentPage} totalPages={totalPages} onSetPage={updateCurrentPageandSearchSettings} />    
-            <AddToListModal show={showAddToListModal} options={customLists} onClose={() => setShowAddToListModal(false)}  />
+            <AddToListModal show={showAddToListModal} options={customLists} onClose={() => setShowAddToListModal(false)} onSubmit={submitItemToList}  />
         </div>
     )
 }
