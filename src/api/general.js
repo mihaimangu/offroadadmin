@@ -28,6 +28,10 @@ export const addNewCustomList = (name) => {
     });
 }
 
+export const getCustomListByName = (name) => {
+    return axios.get(root + `/api/customlist/${name}`);
+}
+
 export const addNewItemToCustomList = (listId, item) => {
     return axios.put(root + `/api/customlist/${listId}`, {
         item

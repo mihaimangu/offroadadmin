@@ -1,4 +1,6 @@
 import React, {useState, useEffect, useContext} from 'react';
+import { Link } from 'react-router-dom';
+
 import Button from 'react-bootstrap/Button';
 import {AdminContext} from 'context/AdminContext';
 import { CustomListOverview, AdminCustomListsWrapper } from './AdminCustomLists.styled';
@@ -37,7 +39,9 @@ function AdminCustomLists(){
             <h1>Custom lists</h1>
             <div className="custom-list__table">
                 {customLists.map((customList, index) => {
-                    return <CustomListWrapper key={index} customList={customList} />
+                    return <Link to={`/admin/customlists/${customList.name}`}>
+                        <CustomListWrapper key={index} customList={customList} />
+                    </Link>
                 })}
             </div>
             <Button className="custom-list__new-btn" onClick={() => setShowModal(true)}>

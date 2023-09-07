@@ -60,24 +60,6 @@ function List(props){
         grabAdsFromApi(searchParams);
     }
 
-    // useEffect(() => {
-    //     let searchParams = {
-    //         ...searchSettings,
-    //         page: currentPage
-    //     }
-    //     grabAdsFromApi(searchParams)
-
-
-
-    // }, [currentPage])
-
-    
-    // useEffect(() => {
-    //     if (!isInitialState) {
-    //       console.log('Filters have been reset');
-    //       // Perform your action here
-    //     }
-    //   }, [isInitialState]);
  
    useEffect(() => {
         setIsError(false);

@@ -74,7 +74,7 @@ function AdminHome(){
           </div>}
 
           <Button onClick={logout}>
-            Logout
+                Logout
           </Button>
         </div>
       );
