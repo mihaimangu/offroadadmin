@@ -14,6 +14,7 @@ import AdminPage from './components/Pages/Admin/Admin';
 import Protected from 'components/Pages/Protected/Protected';
 import CustomLists from 'components/Pages/CustomLists/AdminCustomLists';
 import CustomListOverview from 'components/Pages/CustomLists/CustomListOverview';
+import EditorChoiceList from 'components/Pages/EditorChoice/EditorChoiceList';
 
 const TRACKING_ID = "G-0QER2JE1YS"; 
 const isProduction = process.env.NODE_ENV === 'production';
@@ -51,6 +52,7 @@ function AppRoutes() {
         <Route path="/admin/ads" element={<ProtectedRoute><AdminAdList /></ProtectedRoute>} />
         <Route path="/admin/customlists" element={<ProtectedRoute><CustomLists /></ProtectedRoute>} />
         <Route path="/admin/customlists/:id" element={<ProtectedRoute><CustomListOverview /></ProtectedRoute>} />
+        <Route path="/selectieanunturi" element={<EditorChoiceList />} />
 
     </Routes>
 }
