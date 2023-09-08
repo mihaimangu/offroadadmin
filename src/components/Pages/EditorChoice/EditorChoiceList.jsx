@@ -2,7 +2,8 @@ import React, {useState, useEffect, useContext} from "react";
 import {useParams, Link} from 'react-router-dom';
 import { getCustomListByName } from 'api/general';
 import LoadingWrapper from "components/Molecules/LoadingWrapper";
-import Car from "components/Organisms/AdminAdCard/AdminAdCard.jsx";
+import Car from "components/car.jsx";
+
 
 
 function EditorChoiceList() {
@@ -35,7 +36,8 @@ function EditorChoiceList() {
         <div  className="cars-list__wrapper">
             <h1>Selectie anunțuri mașini 4x4 de teren</h1>
             <p>Lista aceasta este o selecție de anunțuri cu mașini 4x4 de teren, care au fost adăugate de către editorii platformei.</p>
-            <p>Aici poți să vezi anunțurile care au fost postate pe TikTok / Instagram etc</p>
+            <p>Adică aici practic sunt mașinile care nouă ni se par mai speciale.</p>
+            <p>Aici poți să vezi anunțurile care au fost postate pe TikTok / Instagram etc.</p>
             <div className="cars-list__inner-wrapper">
                 {cars.length && cars.map((car, index) => {
                     return <Link to={`/admin/ads/${car.id}`}>

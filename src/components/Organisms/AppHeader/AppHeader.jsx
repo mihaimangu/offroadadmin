@@ -46,7 +46,10 @@ const AppHeader = () => {
                     <Offcanvas.Body>
                         <ul className="side-menu__wrapper">
                             <li className="side-menu__item">
-                                <Link to="/anunturi" className="side-menu__link" onClick={handleMenuClick}>Anunturi</Link>
+                                <Link to="/anunturi" className="side-menu__link" onClick={handleMenuClick}>Toate anunțurile</Link>
+                            </li>
+                            <li className="side-menu__item">
+                                <Link to="/selectieanunturi" className="side-menu__link" onClick={handleMenuClick}>Anunțuri selectate</Link>
                             </li>
                             <li className="side-menu__item">
                                 <Link to="/despre" className="side-menu__link" onClick={handleMenuClick}>Despre</Link>
