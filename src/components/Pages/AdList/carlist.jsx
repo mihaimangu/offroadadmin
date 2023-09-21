@@ -5,10 +5,36 @@ import AdFilters from "components/Organisms/AdFilters/AdFilters.jsx";
 import LoadingWrapper from "components/Molecules/LoadingWrapper";
 import Pagination from "components/Organisms/Pagination/Pagination.jsx";
 import { FiltersContext } from 'context/FiltersContext';
-
+import PintAd from 'components/Atoms/PintAd';
 // import cars.scss
 import styles from './cars.scss'
 
+const CardList = ({cars}) => {
+
+    const AllCards = cars.map((car, index) => ({
+        type: "Car",
+        component: <Car key={car._id} data={car} />
+    }))
+
+    // when index is midpoint, push the promo among the cards
+    const middleNumber = Math.floor(cars.length / 2);
+
+    AllCards.splice(middleNumber, 0, {
+        type: "Promo",
+        component: <PintAd />
+    })
+
+    
+    return (
+        <>
+          {AllCards.map((card, index) => {
+            return <div key={index}>
+                {card.component}
+            </div>;
+          })}
+        </>
+      );
+}
 
 
 function List(props){
@@ -17,7 +43,7 @@ function List(props){
     const [cars, setCars] = useState([])
     const [loading, setLoading] = useState(false);
     const [totalPages, setTotalPages] = useState(15);
-    const {searchSettings, currentPage, setCurrentPage, isInitialState, initialState} = useContext(FiltersContext);
+    const {searchSettings, currentPage, setCurrentPage, initialState} = useContext(FiltersContext);
 
 
     const grabAdsFromApi = (settings = {}) => {
@@ -81,9 +107,7 @@ function List(props){
             {isError && <div>error while getting data</div>}
             <AdFilters onSearch={filterAds} onReset={resetAndSearch}  />
             <div className="cars-list__inner-wrapper">
-                {loading ? <LoadingWrapper /> : cars.length && cars.map((car) => {
-                    return <Car key={car._id} data={car} />
-                })}
+                {loading ? <LoadingWrapper /> : cars.length && <CardList cars={cars} />}
             </div>
        
             <Pagination currentPage={currentPage} totalPages={totalPages} onSetPage={updateCurrentPageandSearchSettings} />    

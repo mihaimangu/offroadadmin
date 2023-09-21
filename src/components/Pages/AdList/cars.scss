@@ -26,6 +26,11 @@
         justify-content: space-between;
         position: relative;
         width: 100%;
+        &.pint-ad{
+            img{
+                width: 100%;
+            }
+        }
         .date{
             font-size: 14px;
             color: gray;
