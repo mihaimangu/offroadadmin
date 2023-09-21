@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {root} from '../api/general';
-import { FaGasPump, FaRegCalendarAlt, FaCogs } from "react-icons/fa";
+import { FaGasPump, FaRegCalendarAlt, FaCogs, FaGlobeAmericas } from "react-icons/fa";
 
 
-function Car({data: {Title, _id, dateAdded, price, adSource, mainImage, hasImages, details = {}, hidden }}){ 
+function Car({data: {Title, _id, dateAdded, price, adSource, mainImage, hasImages, details = {}, hidden, county }}){ 
 
     const {fuelType, yearBuild, engineCapacity } = details;
 
@@ -37,6 +37,8 @@ function Car({data: {Title, _id, dateAdded, price, adSource, mainImage, hasImage
                         {yearBuild &&<div className="car-ad__year-build"><FaRegCalendarAlt />{yearBuild}</div>}
                         {fuelType && <div className="car-ad__fuel-type"><FaGasPump />{fuelType}</div>}
                         {engineCapacity && <div className="car-ad__engine-size"><FaCogs />{engineCapacity}cmc</div>}
+                        {county && <div className="car-ad__county"><FaGlobeAmericas />{county}</div>}
+
                     </section>
                     <section className="car-ad__details-lower">
                        
