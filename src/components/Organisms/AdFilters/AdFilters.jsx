@@ -1,4 +1,5 @@
 import React, {useState, useContext, useEffect} from 'react';
+import { useLocation } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import './AdFilters.scss';
@@ -23,12 +24,13 @@ function SelectList({ initialStateText, values, currentValue, ariaLabel = 'defau
   
 
 const AdFilters = ({onSearch, onReset}) => {
+    const location = useLocation();
+    const {pathname} = location;
+    const locationContainsAdmin = pathname.includes('admin');
+
     const {searchSettings, updateSearchSettings, resetSearchSettings, isInitialState, isExpanded, setIsExpanded} = useContext(FiltersContext);
     const predefinedFilterSettings = useContext(FiltersConfigurationContext);
-    const {model, fuelType} = predefinedFilterSettings;
-
-
-
+    const {model, fuelType, county} = predefinedFilterSettings;
 
     const updateSearchProperty = (property, value) => {
         updateSearchSettings(property, value)
@@ -57,7 +59,6 @@ const AdFilters = ({onSearch, onReset}) => {
     return (
         <div className="filter-ads__wrapper">
             
-
             <div className="filter-ads__column">
                 <div className="filter-ads__row">
                     <Form.Group className="filter-ads__input-group">
@@ -99,18 +100,30 @@ const AdFilters = ({onSearch, onReset}) => {
                 </div>
             
             </div>
+            {locationContainsAdmin && <div className="filter-ads__column">
+                <div className="filter-ads__row">
+                    <Form.Group className="filter-ads__input-group">
+                        <Form.Label className="filter-ads__group-label">Motor de la</Form.Label>
+                        <Form.Control type="number" placeholder="Capacitate de la" value={searchSettings.engineCapacityFrom} onChange={(e) => updateSearchProperty('engineCapacityFrom', e.target.value)} />
+                    </Form.Group>
+                    <Form.Group className="filter-ads__input-group">
+                        <Form.Label className="filter-ads__group-label">Motor pana la</Form.Label>
+                        <Form.Control type="number" placeholder="Capacitate pana la" value={searchSettings.engineCapacityTo} onChange={(e) => updateSearchProperty('engineCapacityTo', e.target.value)} />
+                    </Form.Group>
+                </div>
+                {county && <Form.Group className="filter-ads__input-group">
+                    <Form.Label className="filter-ads__group-label">Judet</Form.Label>
+                    <SelectList initialStateText="Selecteaza judet" currentValue={searchSettings.county} values={county.allowedValues} onSelect={(value) => updateSearchProperty('county', value)} />
+                </Form.Group>}
+            </div>}
             <div className="filter-ads__column">
                 <div className="filter-ads__buttons">
                     <Button disabled={isInitialState} onClick={resetFilters} className="filter-ads__search-btn" >Reseteaza</Button>
                     <Button onClick={() => searchAdsWithExistingConfiguration(searchSettings)} className="filter-ads__search-btn" ><FaSearch />Aplica filtre</Button>
-
                 </div>
             </div>
+         
             
-          
-    
-        
-
         </div>
     );
 }
