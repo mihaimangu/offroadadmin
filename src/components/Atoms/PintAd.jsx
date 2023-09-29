@@ -7,11 +7,8 @@ function PintAd(){
     return (
         <div className="cars-list__single-ad pint-ad">
                 <a href={href} target="_blank" rel="nofollow" >
-    
                     <img src={src} alt="pint" />
                 </a>
-
-            
 
         </div>
     )

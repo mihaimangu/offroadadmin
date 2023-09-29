@@ -5,6 +5,7 @@ import { root, getSingleOffroadAd, getSingleOffroadAdImages, scrapeSingleOffroad
 import style from './SingleAd.scss'
 import { stripHtml } from "string-strip-html";
 import LoadingWrapper from 'components/Molecules/LoadingWrapper';
+import { FaGlobeAmericas } from 'react-icons/fa';
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import Button from 'react-bootstrap/Button';
@@ -35,7 +36,7 @@ function SingleAdDisplay({id, adData}){
 
     const translations = useContext(TranslationContext);
 
-    const {Title, description, dateAdded, isAvailable, link, dateLatestScrapped, details, price, adSource} = adData;
+    const {Title, description, dateAdded, isAvailable, link, dateLatestScrapped, details, price, adSource, county, location} = adData;
     const weHaveAvailabilityData = typeof isAvailable !== 'undefined';
 
     const cleanDescription = description ? stripHtml(description).result : "No description";
@@ -54,13 +55,28 @@ function SingleAdDisplay({id, adData}){
         const translatedValue = translations[value] ? translations[value] : value;
         return [label, translatedValue];
     })
+
+    let locationString = '';
+
+    if(county){
+        detailsArray.push(['Judet', county]);
+        locationString += county;
+    }
+
+    if(location){
+        detailsArray.push(['Localitate', location]);
+        locationString += ' ' + location;
+    }
+
+
     
     return <div className="single-ad__display-wrapper">
         <Link to="/anunturi" className="single-ad__back-button">
             <p>  &#8592; Inapoi la anunturi</p>
         </Link>
-        <h2>{Title}</h2>
+        <h1>{Title}</h1>
         {price && <h3>Pret: {price} €</h3>}
+        {locationString && <div className="single-ad__location"><FaGlobeAmericas />{locationString}</div>}
         <p>Data adaugarii: {dateAddedString}</p>
         <p dangerouslySetInnerHTML={{__html: descriptionWithLineBreaks.replace(/\n/g, '<br>')}}></p>
         {weHaveAvailabilityData && <p>Anunt disponibil: {isAvailable ? 'Yes' : 'No'}</p>}
