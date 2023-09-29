@@ -35,6 +35,7 @@
         display: flex;
         column-gap: 10px;
         flex-direction: column;
+        margin-top: 20px;
         .btn{
             display: flex;
             flex-direction: row;
@@ -59,7 +60,6 @@
             display: flex;
             flex-direction: column;
             &:last-of-type{
-                // background: red;
                 flex: 1;
                 justify-content: flex-end;
             }

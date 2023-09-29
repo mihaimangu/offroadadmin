@@ -100,7 +100,7 @@ const AdFilters = ({onSearch, onReset}) => {
                 </div>
             
             </div>
-            {locationContainsAdmin && <div className="filter-ads__column">
+             <div className="filter-ads__column">
                 <div className="filter-ads__row">
                     <Form.Group className="filter-ads__input-group">
                         <Form.Label className="filter-ads__group-label">Motor de la</Form.Label>
@@ -111,11 +111,12 @@ const AdFilters = ({onSearch, onReset}) => {
                         <Form.Control type="number" placeholder="Capacitate pana la" value={searchSettings.engineCapacityTo} onChange={(e) => updateSearchProperty('engineCapacityTo', e.target.value)} />
                     </Form.Group>
                 </div>
-                {county && <Form.Group className="filter-ads__input-group">
+                {county && <div className="filter-ads__row">
+                    <Form.Group className="filter-ads__input-group">
                     <Form.Label className="filter-ads__group-label">Judet</Form.Label>
                     <SelectList initialStateText="Selecteaza judet" currentValue={searchSettings.county} values={county.allowedValues} onSelect={(value) => updateSearchProperty('county', value)} />
-                </Form.Group>}
-            </div>}
+                </Form.Group></div>}
+            </div>
             <div className="filter-ads__column">
                 <div className="filter-ads__buttons">
                     <Button disabled={isInitialState} onClick={resetFilters} className="filter-ads__search-btn" >Reseteaza</Button>
