@@ -6,6 +6,9 @@ const initialState = {
     model: "",
     yearBuildFrom: "",
     yearBuildTo: "",
+    engineCapacityFrom: "",
+    engineCapacityTo: "",
+
 };
 export const FiltersContext = React.createContext();
 
