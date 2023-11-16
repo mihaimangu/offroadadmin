@@ -49,12 +49,12 @@ function SingleAdDisplay({id, adData}){
     const hasDetails = typeof details !== 'undefined' && Object.keys(details).length > 0;
     
     // transform the details from an object to an array. Each array contains first the key and then the value
-    const detailsArray = hasDetails && Object.keys(details).map((key, index) => {
+    const detailsArray = hasDetails ? Object.keys(details).map((key, index) => {
         const label = translations[key] ? translations[key] : key;
         const value = details[key];
         const translatedValue = translations[value] ? translations[value] : value;
         return [label, translatedValue];
-    })
+    }) : [];
 
     let locationString = '';
 
