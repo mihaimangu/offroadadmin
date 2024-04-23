@@ -95,15 +95,3 @@ export const login = (username, password) => {
 
     return axios.post(root + "/api/login", requestBody);
 }
-
-export const checkPrivateRoute = () => {
-    // token is a JWT token, use that as bearer
-    // get the token from cookies
-    const token = Cookies.get('token');
-
-    return axios.get(root + "/api/protected", {
-        headers: {
-            Authorization: `Bearer ${token}`
-        }
-    });
-}

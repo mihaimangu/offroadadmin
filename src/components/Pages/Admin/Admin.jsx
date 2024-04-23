@@ -1,9 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import {login, checkPrivateRoute} from 'api/general';
 import { Link } from 'react-router-dom';
-import { set } from 'react-ga';
 import {useAuth} from 'context/UserContext';
 
 function AdminHome(){
@@ -17,22 +15,10 @@ function AdminHome(){
     const isAuth = typeof cookies?.token !== 'undefined';
 
     const submitHandler= async () =>{
-        console.log('submit ', username, password);
         setUsername('');
         setPassword('');
 
         const response = await contextLogin(username, password);
-        console.log('response is', response);
-
-    }
-
-    const checkPrivateRouteHandler = () => {
-
-        checkPrivateRoute().then(res => {
-            console.log('res', res)
-        }).catch(err => {
-            console.log('err', err)
-        })
     }
 
     return (
@@ -43,7 +29,7 @@ function AdminHome(){
                 <Form.Label>Email address</Form.Label>
                 <Form.Control type="text" placeholder="Enter email" value={username} onChange={e => setUsername(e.target.value)} />
                 <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
+                    We'll never share your email with anyone else.
                 </Form.Text>
             </Form.Group>
         
@@ -52,16 +38,13 @@ function AdminHome(){
                 <Form.Control type="password" placeholder="Password"  onChange={e => setPassword(e.target.value)} value={password} />
             </Form.Group>
 
-            <Button variant="primary" type="submit" onClick={submitHandler}>
+            <Button variant="primary" type="submit" className="w-100" onClick={submitHandler}>
                 Submit
             </Button>
             </div>}
       
 
           {isAuth && <div>
-            <Button onClick={checkPrivateRouteHandler}>
-                check private route
-            </Button>
             <Link to="/admin/ads">
                 <Button>Admin ads</Button>
             </Link>
@@ -73,9 +56,9 @@ function AdminHome(){
             </Link>
           </div>}
 
-          <Button onClick={logout}>
+          {isAuth && <Button onClick={logout}>
                 Logout
-          </Button>
+          </Button>}
         </div>
       );
 }
