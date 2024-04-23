@@ -1,6 +1,4 @@
 import axios from "axios";
-import Cookies from 'js-cookie';
-
 
 const isProduction = process.env.NODE_ENV === "production";
 export const root = isProduction ?  "https://masinideteren.ro:4000" : "http://localhost:4000";
