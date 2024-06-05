@@ -1,5 +1,14 @@
 
 .cars-list{
+    &__description{
+        text-align:left;
+        width: 100%;
+        p{
+            max-width: 650px;
+            font-size: 18px;
+        }
+        
+    }
     &__wrapper{
         display: flex;
         flex-direction: column;
@@ -12,9 +21,7 @@
         flex-direction: column;
         justify-content: center;
         gap: 10px;
-        > a{
-            // max-width: 100%;
-        }
+  
     }
     &__single-ad{
         border: 1px solid rgb(198, 196, 196);
@@ -52,7 +59,7 @@
 
 .car-ad{
     &__price{
-        color: rgb(184, 184, 184);
+        color: rgb(46, 46, 46);
         font-size:14px;
         font-weight: 700;
     }
@@ -78,28 +85,23 @@
         display: block;
         position: relative;
         width: 100%;
-        // height: calc(width * 0.75);
         padding-bottom: 65%;
         overflow: hidden;
         background-size: cover;
         background-position: center;
         background-color: lightgray
-        // img{
-        //     object-fit: scale-down;
-        // }
+
     }
     &__title{
-        color:white;
-        font-size: 14px;
+        font-size: 15px;
         line-break: anywhere;
         text-overflow: ellipsis;
-        // white-space: nowrap;
         overflow: hidden;
+        font-weight: 500;
     }
     
     &__details{
         text-align: left;
-        // background:pink;
         padding: 5px;
         display: flex;
         flex-direction: column;
@@ -136,7 +138,6 @@
 @media screen and (min-width: 500px) {
     .cars-list{
         &__inner-wrapper{
-            // background: pink;
             flex-direction: row;
             flex-wrap: wrap;
         }
