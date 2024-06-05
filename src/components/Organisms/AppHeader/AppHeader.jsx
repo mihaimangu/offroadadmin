@@ -54,6 +54,9 @@ const AppHeader = () => {
                             <li className="side-menu__item">
                                 <Link to="/despre" className="side-menu__link" onClick={handleMenuClick}>Despre</Link>
                             </li>
+                            <li className="side-menu__item">
+                                <Link to="https://masinideteren.ro/wp" className="side-menu__link">Shop</Link>
+                            </li>
                             {isAuth && <li className="side-menu__item">
                                 <Link to="/admin" className="side-menu__link" onClick={handleMenuClick}>Admin</Link>
                                 </li>}

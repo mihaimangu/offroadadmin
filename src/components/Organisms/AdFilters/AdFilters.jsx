@@ -50,7 +50,7 @@ const AdFilters = ({onSearch, onReset}) => {
     if(!isExpanded){
         return (
             <div className="filter-ads__wrapper">
-                <Button onClick={() => setIsExpanded(true)} className="filter-ads__search-btn" >Filtreaza anunturi</Button>
+                <Button variant="dark"  onClick={() => setIsExpanded(true)} className="filter-ads__search-btn" >Filtreaza anunturi</Button>
             </div>
         )
     }

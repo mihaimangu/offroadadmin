@@ -18,7 +18,7 @@ import AdGallery from './AdImageGallery';
 
 function DetailsTable({details}){
     return <div>
-        <Table striped variant="dark">
+        <Table striped >
             <tbody>
             {details.map((detail, index) => {
                 return <tr key={index}>
@@ -83,7 +83,7 @@ function SingleAdDisplay({id, adData}){
         {adSource && <h4>Preluat din {adSource}</h4>}
         
         {hasDetails && <DetailsTable details={detailsArray} />}
-        <Button onClick={() => ReactGA.send({hitType: "clickexternal", title: id })} href={link}>Vezi anuntul original</Button>
+        <Button variant="dark"  onClick={() => ReactGA.send({hitType: "clickexternal", title: id })} href={link}>Vezi anuntul original</Button>
        
     </div>
 }
