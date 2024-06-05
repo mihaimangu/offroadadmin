@@ -75,21 +75,21 @@ img{
   max-width: $content-width;
 }
 
+
 @media screen and (min-width: 1000px) {
 
   .app-header, .main-content-wrapper{
-    max-width: 920px;
+    max-width: 90%;
   }
 
   .filter-ads__wrapper{
-    max-width: 900px;
+    // max-width: 900px;
   }
 
   .cars-list__description{
     margin-left: auto;
     margin-right: auto;
   }
-
 
 }
 

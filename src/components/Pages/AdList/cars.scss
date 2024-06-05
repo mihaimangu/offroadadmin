@@ -21,7 +21,10 @@
         flex-direction: column;
         justify-content: center;
         gap: 10px;
-  
+        >div {
+            flex-grow: 1;
+            flex-basis: 0;
+        }
     }
     &__single-ad{
         border: 1px solid rgb(198, 196, 196);
@@ -29,7 +32,6 @@
         flex-direction: column;
         margin-bottom: 5px;
         font-size: 18px;
-        padding: 5px;
         justify-content: space-between;
         position: relative;
         width: 100%;
@@ -41,6 +43,7 @@
         .date{
             font-size: 14px;
             color: gray;
+
         }
         &.hidden{
             opacity: .8;
@@ -102,11 +105,12 @@
     
     &__details{
         text-align: left;
-        padding: 5px;
+        padding: 8px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         width: 100%;
+        background-color: rgb(242, 242, 242);
     }
     &__details-lower{
         display:flex;
@@ -125,13 +129,17 @@
         }
     }
     &__source{
-        background: grey;
-        display: block;
+        background: rgb(236, 236, 236);
+        display: flex;
+        align-items: center;
+        gap: 5px;
         position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
+        top: 0;
+        right: 0;
+        z-index: 1;
+        // width: 100%;
         font-size: 12px;
+        padding: 5px;
     }
 }
 
@@ -143,6 +151,34 @@
         }
         &__single-ad{
             width: 450px;
+        }
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .cars-list{
+        &__single-ad{
+            width: auto;
+        }
+        &__inner-wrapper{
+        
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            justify-content: normal ;
+            max-width: 100%;
+      
+        }
+    }
+}
+
+@media screen and (min-width: 1300px) {
+    .cars-list{
+
+        &__inner-wrapper{ 
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            justify-content: normal ;
+            max-width: 100%;
+      
         }
     }
 }

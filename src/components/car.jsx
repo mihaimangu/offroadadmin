@@ -20,6 +20,8 @@ function Car({data: {Title, _id, dateAdded, price, adSource, mainImage, hasImage
     return (
         <Link to={`/ad/${_id}`}>
             <div className="cars-list__single-ad">
+                {adSource && <div className="car-ad__source"><FaGlobe />{adSource}</div>}
+
                 <div className="car-ad__image" style={imageStyle}>
 
                 </div>
@@ -29,13 +31,14 @@ function Car({data: {Title, _id, dateAdded, price, adSource, mainImage, hasImage
                             {Title}
                         </div>
                       
+
                     </section>
                     <section  className="car-ad__details-row">
+                        
                         {yearBuild &&<div className="car-ad__year-build"><FaRegCalendarAlt />{yearBuild}</div>}
                         {fuelType && <div className="car-ad__fuel-type"><FaGasPump />{fuelType}</div>}
                         {engineCapacity && <div className="car-ad__engine-size"><FaCogs />{engineCapacity}cmc</div>}
                         {county && <div className="car-ad__county"><FaGlobeAmericas />{county}</div>}
-                        {adSource && <div className="car-ad"><FaGlobe />{adSource}</div>}
                     </section> 
                     <section className="car-ad__details-lower">
                        
