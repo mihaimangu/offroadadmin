@@ -120,7 +120,7 @@ const AdFilters = ({onSearch, onReset}) => {
             <div className="filter-ads__column">
                 <div className="filter-ads__buttons">
                     <Button disabled={isInitialState} onClick={resetFilters} className="filter-ads__search-btn" >Reseteaza</Button>
-                    <Button onClick={() => searchAdsWithExistingConfiguration(searchSettings)} className="filter-ads__search-btn" ><FaSearch />Aplica filtre</Button>
+                    <Button onClick={() => searchAdsWithExistingConfiguration(searchSettings)} className="filter-ads__search-btn" ><FaSearch />Cauta</Button>
                 </div>
             </div>
          
