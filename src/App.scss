@@ -1,18 +1,24 @@
 $content-width: 450px;
 
+// font 
+.racing-sans {
+  font-family: "Racing Sans One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 
 .App {
   text-align: center;
-  background-color: #282c34;
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: white;
+  color: black;
   padding: 10px;
 }
 
 a{
-  color: white;
+  color: black;
   text-decoration: none;
 }
 
@@ -26,9 +32,11 @@ a{
 
 
 .logo-wrapper{
-  max-width:200px;
   margin-bottom:20px;
   margin-top:20px;
+  h1{
+    color:black;
+  }
 }
 
 img{
@@ -40,15 +48,13 @@ img{
   position: relative;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
   width: 100%;
   max-width: $content-width;
 
   &__btn{
-    display: block;
-    position: absolute;
-    left: 0;
+    margin-right: 30px;
+    cursor: pointer;
   }
   &__center{
     display: flex;
@@ -69,22 +75,21 @@ img{
   max-width: $content-width;
 }
 
+
 @media screen and (min-width: 1000px) {
 
   .app-header, .main-content-wrapper{
-    max-width: 920px;
+    max-width: 90%;
   }
 
   .filter-ads__wrapper{
-    max-width: 900px;
+    // max-width: 900px;
   }
 
   .cars-list__description{
-    max-width: 600px;
     margin-left: auto;
     margin-right: auto;
   }
-
 
 }
 

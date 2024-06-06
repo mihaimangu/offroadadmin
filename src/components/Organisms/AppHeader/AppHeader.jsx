@@ -7,7 +7,6 @@ import {resetSearchSettings, FiltersContext} from 'context/FiltersContext';
 import {useAuth} from 'context/UserContext';
 
 // use absolute path for importing the 4x4logo
-import logo4x4 from 'images/jeeplogo.png';
 import './AppHeader.scss';
 
 const AppHeader = () => {
@@ -30,11 +29,12 @@ const AppHeader = () => {
     return (
         <>
             <header className="app-header">
-                <Button className="app-header__btn" onClick={toggleMenu}><FaBars /></Button>
+             
+            <FaBars  onClick={toggleMenu} className="app-header__btn" />
 
                 <div className="logo-wrapper">
                     <Link to="/" className="App-link">
-                        <img src={logo4x4} className="App-logo" alt="logo" />
+                        <h1 className="racing-sans">masini de teren .ro</h1>
                     </Link>
                 </div>
                 
@@ -53,6 +53,9 @@ const AppHeader = () => {
                             </li>
                             <li className="side-menu__item">
                                 <Link to="/despre" className="side-menu__link" onClick={handleMenuClick}>Despre</Link>
+                            </li>
+                            <li className="side-menu__item">
+                                <Link to="https://masinideteren.ro/wp" className="side-menu__link">Shop</Link>
                             </li>
                             {isAuth && <li className="side-menu__item">
                                 <Link to="/admin" className="side-menu__link" onClick={handleMenuClick}>Admin</Link>

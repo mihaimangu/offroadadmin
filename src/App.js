@@ -1,13 +1,12 @@
-import React, {useState, useEffect} from 'react';
-import ReactGA from 'react-ga4';
+import React from 'react';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
 import AppHeader from './components/Organisms/AppHeader/AppHeader';
 import AppFooter from 'components/Organisms/AppFooter/AppFooter';
-import AppRoutes from './AppRoutes';
+import AppRoutes from './AppRoutes'; 
 
-import { BrowserRouter as Router, Route, LinkProps, Routes, Link, useNavigation } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import SettingsContext from 'context/SettingsContext';
 import FiltersContext from 'context/FiltersContext';
 import UserContext from 'context/UserContext';
