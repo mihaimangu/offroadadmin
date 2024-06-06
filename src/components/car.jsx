@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {root} from '../api/general';
-import { FaGasPump, FaRegCalendarAlt, FaCogs, FaGlobeAmericas } from "react-icons/fa";
+import { FaGasPump, FaRegCalendarAlt, FaCogs, FaGlobeAmericas, FaGlobe } from "react-icons/fa";
 
 
 function Car({data: {Title, _id, dateAdded, price, adSource, mainImage, hasImages, details = {}, hidden, county }}){ 
@@ -20,11 +20,10 @@ function Car({data: {Title, _id, dateAdded, price, adSource, mainImage, hasImage
     return (
         <Link to={`/ad/${_id}`}>
             <div className="cars-list__single-ad">
+                {adSource && <div className="car-ad__source"><FaGlobe />{adSource}</div>}
+
                 <div className="car-ad__image" style={imageStyle}>
-                    {/* <img src={imageUrl} alt="car" /> */}
-                    {adSource && <div className="car-ad__source">
-                        {adSource}
-                    </div>}
+
                 </div>
                 <div className='car-ad__details'>
                     <section >
@@ -32,14 +31,15 @@ function Car({data: {Title, _id, dateAdded, price, adSource, mainImage, hasImage
                             {Title}
                         </div>
                       
+
                     </section>
                     <section  className="car-ad__details-row">
+                        
                         {yearBuild &&<div className="car-ad__year-build"><FaRegCalendarAlt />{yearBuild}</div>}
                         {fuelType && <div className="car-ad__fuel-type"><FaGasPump />{fuelType}</div>}
                         {engineCapacity && <div className="car-ad__engine-size"><FaCogs />{engineCapacity}cmc</div>}
                         {county && <div className="car-ad__county"><FaGlobeAmericas />{county}</div>}
-
-                    </section>
+                    </section> 
                     <section className="car-ad__details-lower">
                        
                         <div className="date">

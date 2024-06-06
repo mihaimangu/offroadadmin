@@ -1,5 +1,14 @@
 
 .cars-list{
+    &__description{
+        text-align:left;
+        width: 100%;
+        p{
+            max-width: 650px;
+            font-size: 18px;
+        }
+        
+    }
     &__wrapper{
         display: flex;
         flex-direction: column;
@@ -12,8 +21,9 @@
         flex-direction: column;
         justify-content: center;
         gap: 10px;
-        > a{
-            // max-width: 100%;
+        >div {
+            flex-grow: 1;
+            flex-basis: 0;
         }
     }
     &__single-ad{
@@ -22,7 +32,6 @@
         flex-direction: column;
         margin-bottom: 5px;
         font-size: 18px;
-        padding: 5px;
         justify-content: space-between;
         position: relative;
         width: 100%;
@@ -34,6 +43,7 @@
         .date{
             font-size: 14px;
             color: gray;
+
         }
         &.hidden{
             opacity: .8;
@@ -52,7 +62,7 @@
 
 .car-ad{
     &__price{
-        color: rgb(184, 184, 184);
+        color: rgb(46, 46, 46);
         font-size:14px;
         font-weight: 700;
     }
@@ -78,33 +88,29 @@
         display: block;
         position: relative;
         width: 100%;
-        // height: calc(width * 0.75);
         padding-bottom: 65%;
         overflow: hidden;
         background-size: cover;
         background-position: center;
         background-color: lightgray
-        // img{
-        //     object-fit: scale-down;
-        // }
+
     }
     &__title{
-        color:white;
-        font-size: 14px;
+        font-size: 15px;
         line-break: anywhere;
         text-overflow: ellipsis;
-        // white-space: nowrap;
         overflow: hidden;
+        font-weight: 500;
     }
     
     &__details{
         text-align: left;
-        // background:pink;
-        padding: 5px;
+        padding: 8px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         width: 100%;
+        background-color: rgb(242, 242, 242);
     }
     &__details-lower{
         display:flex;
@@ -123,25 +129,56 @@
         }
     }
     &__source{
-        background: grey;
-        display: block;
+        background: rgb(236, 236, 236);
+        display: flex;
+        align-items: center;
+        gap: 5px;
         position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
+        top: 0;
+        right: 0;
+        z-index: 1;
+        // width: 100%;
         font-size: 12px;
+        padding: 5px;
     }
 }
 
 @media screen and (min-width: 500px) {
     .cars-list{
         &__inner-wrapper{
-            // background: pink;
             flex-direction: row;
             flex-wrap: wrap;
         }
         &__single-ad{
             width: 450px;
+        }
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .cars-list{
+        &__single-ad{
+            width: auto;
+        }
+        &__inner-wrapper{
+        
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            justify-content: normal ;
+            max-width: 100%;
+      
+        }
+    }
+}
+
+@media screen and (min-width: 1300px) {
+    .cars-list{
+
+        &__inner-wrapper{ 
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            justify-content: normal ;
+            max-width: 100%;
+      
         }
     }
 }

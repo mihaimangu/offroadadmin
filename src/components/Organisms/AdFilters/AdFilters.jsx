@@ -50,7 +50,7 @@ const AdFilters = ({onSearch, onReset}) => {
     if(!isExpanded){
         return (
             <div className="filter-ads__wrapper">
-                <Button onClick={() => setIsExpanded(true)} className="filter-ads__search-btn" >Filtreaza anunturi</Button>
+                <Button variant="dark"  onClick={() => setIsExpanded(true)} className="filter-ads__search-btn" >Filtreaza anunturi</Button>
             </div>
         )
     }
@@ -120,7 +120,7 @@ const AdFilters = ({onSearch, onReset}) => {
             <div className="filter-ads__column">
                 <div className="filter-ads__buttons">
                     <Button disabled={isInitialState} onClick={resetFilters} className="filter-ads__search-btn" >Reseteaza</Button>
-                    <Button onClick={() => searchAdsWithExistingConfiguration(searchSettings)} className="filter-ads__search-btn" ><FaSearch />Aplica filtre</Button>
+                    <Button onClick={() => searchAdsWithExistingConfiguration(searchSettings)} className="filter-ads__search-btn" ><FaSearch />Cauta</Button>
                 </div>
             </div>
          
