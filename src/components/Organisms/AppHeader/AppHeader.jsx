@@ -1,9 +1,8 @@
 import React, {useState, useContext} from 'react';
 import { Link } from 'react-router-dom';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import Button from 'react-bootstrap/Button';
 import { FaBars } from "react-icons/fa";
-import {resetSearchSettings, FiltersContext} from 'context/FiltersContext';
+import {FiltersContext} from 'context/FiltersContext';
 import {useAuth} from 'context/UserContext';
 
 // use absolute path for importing the 4x4logo

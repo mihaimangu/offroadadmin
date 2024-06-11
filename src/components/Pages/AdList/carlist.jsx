@@ -6,8 +6,9 @@ import LoadingWrapper from "components/Molecules/LoadingWrapper";
 import Pagination from "components/Organisms/Pagination/Pagination.jsx";
 import { FiltersContext } from 'context/FiltersContext';
 import PintAd from 'components/Atoms/PintAd';
+import TricouriAd from 'components/Atoms/TricouriAd';
+
 // import cars.scss
-import styles from './cars.scss'
 
 const CardList = ({cars}) => {
 
@@ -21,7 +22,7 @@ const CardList = ({cars}) => {
 
     AllCards.splice(middleNumber, 0, {
         type: "Promo",
-        component: <PintAd />
+        component: <TricouriAd />
     })
 
     
