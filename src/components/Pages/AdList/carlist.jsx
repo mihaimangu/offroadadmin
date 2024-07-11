@@ -107,9 +107,9 @@ function List(props){
             </div>
             {isError && <div>error while getting data</div>}
             <AdFilters onSearch={filterAds} onReset={resetAndSearch}  />
-            <div className="cars-list__inner-wrapper">
-                {loading ? <LoadingWrapper /> : cars.length && <CardList cars={cars} />}
-            </div>
+            {loading? <LoadingWrapper /> : <div className="cars-list__inner-wrapper">
+               <CardList cars={cars} />
+            </div>}
        
             <Pagination currentPage={currentPage} totalPages={totalPages} onSetPage={updateCurrentPageandSearchSettings} />    
         </div>
