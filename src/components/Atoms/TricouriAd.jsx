@@ -2,7 +2,7 @@ import React from 'react';
 import ImgTricouri from 'images/cumpara-tricouri.jpg'
 
 function PintAd(){
-    const href = "https://masinideteren.ro/wp"
+    const href = "https://masinideteren.ro/shop"
 
     return (
         <div className="cars-list__single-ad pint-ad">
