@@ -34,7 +34,7 @@ function EditorChoiceList() {
 
     return (
         <div  className="cars-list__wrapper">
-            <h1>Selectie anunțuri mașini 4x4 de teren</h1>
+            <h1>Masini prezentate ca "masina zilei"</h1>
             <p>Lista aceasta este o selecție de anunțuri cu mașini 4x4 de teren, care au fost adăugate de către editorii platformei.</p>
             <p>Adică aici practic sunt mașinile care nouă ni se par mai speciale.</p>
             <p>Aici poți să vezi anunțurile care au fost postate pe TikTok / Instagram etc.</p>

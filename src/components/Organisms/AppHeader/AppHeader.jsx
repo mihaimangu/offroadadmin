@@ -48,7 +48,7 @@ const AppHeader = () => {
                                 <Link to="/anunturi" className="side-menu__link" onClick={handleMenuClick}>Toate anunțurile</Link>
                             </li>
                             <li className="side-menu__item">
-                                <Link to="/selectieanunturi" className="side-menu__link" onClick={handleMenuClick}>Anunțuri selectate</Link>
+                                <Link to="/selectieanunturi" className="side-menu__link" onClick={handleMenuClick}>Mașina zilei</Link>
                             </li>
                             <li className="side-menu__item">
                                 <Link to="/despre" className="side-menu__link" onClick={handleMenuClick}>Despre</Link>
