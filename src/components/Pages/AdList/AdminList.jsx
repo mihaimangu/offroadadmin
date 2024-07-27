@@ -10,7 +10,6 @@ import {AdminContext} from "context/AdminContext";
 // import cars.scss
 import styles from './cars.scss'
 
-
 function AdminAdList(props){
 
     const [isError, setIsError] = useState(false)
@@ -28,8 +27,10 @@ function AdminAdList(props){
     const {customLists} = useContext(AdminContext);
 
 
-    const grabAdsFromApi = (settings = {}) => {
-        setLoading(true);
+    const grabAdsFromApi = (settings = {}, triggerLoading = true) => {
+        if(triggerLoading){
+            setLoading(true);
+        }
         settings.includeUnscraped = true;
         settings.includeHidden = true;
         getList(settings).then((res) => {
@@ -53,6 +54,14 @@ function AdminAdList(props){
             console.log('we have err', err)
             setIsError(true)
         });
+    }
+
+    const refetchList = () => {
+        let searchParams = {
+            ...filterSettings,
+            page: currentPage,
+        }
+        grabAdsFromApi(searchParams, false)
     }
 
     const filterAds = (searchSettings) => {
@@ -85,7 +94,9 @@ function AdminAdList(props){
    const onShow = (itemId) => {
         console.log('show item', itemId)
         showSingleAd(itemId).then(res => {
-            console.log('item shown', res)
+            console.log('item shown', res);
+            refetchList();
+
         }).catch(err => {
             console.log('error showing item', err)
         })
@@ -95,6 +106,8 @@ function AdminAdList(props){
         console.log('hide item', itemId)
         hideSingleAd(itemId).then(res => {
             console.log('item hidden', res)
+            refetchList();
+
         }).catch(err => {
             console.log('error hiding item', err)
         })
@@ -107,11 +120,11 @@ function AdminAdList(props){
    }
 
    const submitItemToList = async (listId) => {
-        setShowAddToListModal(false);
         const newItem = await addNewItemToCustomList(listId, itemToBeAddedToList);
-   };
+        setShowAddToListModal(false);
+        refetchList();
 
-   
+   };
 
     return (
         <div className="cars-list__wrapper">
