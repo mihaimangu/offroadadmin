@@ -15,6 +15,7 @@ import Protected from 'components/Pages/Protected/Protected';
 import CustomLists from 'components/Pages/CustomLists/AdminCustomLists';
 import CustomListOverview from 'components/Pages/CustomLists/CustomListOverview';
 import EditorChoiceList from 'components/Pages/EditorChoice/EditorChoiceList';
+import AddNewPage from 'components/Pages/AddNew/AddNew';
 
 const TRACKING_ID = "G-0QER2JE1YS"; 
 const isProduction = process.env.NODE_ENV === 'production';
@@ -43,6 +44,8 @@ function AppRoutes() {
         <Route path="/" element={<List />} />
         <Route path="/anunturi" element={<List />} />
         <Route path="/despre" element={<AboutPage />} />
+        <Route path="/adauga-anunt" element={<AddNewPage />} />
+
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/anunturi/:id" element={<ModelPage />} />
         <Route path="/ad/:id" element={<SingleAd />} />
