@@ -49,6 +49,9 @@ function List(props){
 
     const grabAdsFromApi = (settings = {}) => {
         setLoading(true);
+
+        settings.adSource = 'olx'
+
         getList(settings).then((res) => {
             setLoading(false);
             if(res.data?.offroadCars){
