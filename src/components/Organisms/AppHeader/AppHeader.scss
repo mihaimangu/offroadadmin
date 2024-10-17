@@ -1,32 +1,47 @@
-.app-menu{
-    &__wrapper{
+.app-menu {
+    &__wrapper {
         text-align: center;
         display: flex;
         justify-content: center;
         margin-bottom: 10px;
     }
-    &__main{
+    &__main {
         display: flex;
         flex-direction: row;
     }
-    &__item{
+    &__item {
         margin-right: 10px;
     }
 }
 
-.side-menu{
-    &__wrapper{
+.side-menu {
+    &__wrapper {
         color: black;
         display: flex;
         flex-direction: column;
         list-style: none;
         row-gap: 10px;
     }
-    &__item{
+    &__item {
         color: black;
         font-size: 20px;
-        a{
+        a {
             color: black;
+        }
+    }
+
+    &__sub-menu {
+        // padding-left: 10px;
+        li {
+            display: flex;
+            flex-direction: column;
+        }
+
+        a {
+            margin-top: 5px;
+        }
+        svg{
+            margin-right: 7px;
         }
     }
 }
