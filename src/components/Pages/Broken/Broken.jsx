@@ -95,7 +95,8 @@ function List(props){
         setLoading(true);
         let searchParams = {
             ...searchSettings,
-            page: currentPage
+            page: currentPage,
+            hasDefect: true,
         }
         grabAdsFromApi(searchParams);
    }, [])
@@ -103,8 +104,8 @@ function List(props){
     return (
         <div className="cars-list__wrapper">
             <div className="cars-list__description">
-                <h2>Gasesti aici anunturi cu masini de teren</h2>
-                <p>Anunturile sunt agregate din platforme precum OLX, Autovit sau LaJumate. Poti folosi optiunile de mai jos pentru a filtra anunturile.</p>
+                <h2>Gasesti aici selectie cu masini defecte</h2>
+                <p>Aici sunt anunturile scanate de un robot, care analizeaza anunturile si arata masinile potential defecte</p>
             </div>
             {isError && <div>error while getting data</div>}
             <AdFilters onSearch={filterAds} onReset={resetAndSearch}  />

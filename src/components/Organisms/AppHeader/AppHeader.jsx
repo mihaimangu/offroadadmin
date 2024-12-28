@@ -60,6 +60,15 @@ const AppHeader = () => {
                                 Mașina zilei
                             </Link>
                         </li>
+                        <li className="side-menu__item">
+                            <Link
+                                to="/defecte"
+                                className="side-menu__link"
+                                onClick={handleMenuClick}
+                            >
+                                Mașini defecte
+                            </Link>
+                        </li>
 
                         <li className="side-menu__item">
                             <Link

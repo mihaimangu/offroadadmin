@@ -5,6 +5,7 @@ import ReactGA from 'react-ga4';
 
 import JobsPage from './components/Pages/Jobs';
 import List from './components/Pages/AdList/carlist';
+import BrokenList from './components/Pages/Broken/Broken';
 import AdminAdList from 'components/Pages/AdList/AdminList';
 import ModelPage from './components/Pages/Model/ModelPage';
 import AboutPage  from './components/Pages/About/About';
@@ -45,7 +46,6 @@ function AppRoutes() {
         <Route path="/anunturi" element={<List />} />
         <Route path="/despre" element={<AboutPage />} />
         <Route path="/adauga-anunt" element={<AddNewPage />} />
-
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/anunturi/:id" element={<ModelPage />} />
         <Route path="/ad/:id" element={<SingleAd />} />
@@ -56,6 +56,7 @@ function AppRoutes() {
         <Route path="/admin/customlists" element={<ProtectedRoute><CustomLists /></ProtectedRoute>} />
         <Route path="/admin/customlists/:id" element={<ProtectedRoute><CustomListOverview /></ProtectedRoute>} />
         <Route path="/selectieanunturi" element={<EditorChoiceList />} />
+        <Route path="/defecte" element={<BrokenList/>} />
 
     </Routes>
 }
